@@ -9,9 +9,9 @@ import java.util.ArrayList;
  *
  * @author BARATHI
  */
-public class EmployeeList {
+public class EmployeeDirectory {
     private ArrayList <Employee> list;
-    public EmployeeList()
+    public EmployeeDirectory()
     {
         this.list=new ArrayList<Employee>();       
     }

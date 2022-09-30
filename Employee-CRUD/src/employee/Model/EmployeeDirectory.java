@@ -37,4 +37,12 @@ public class EmployeeDirectory {
     {
         list.add(emp);
     }
+    public ArrayList<Employee> getEmployeeDirectory()
+    {
+        return list;
+    }
+    public void setDirectory(ArrayList<Employee> dict)
+    {
+        this.list=dict;
+    }
 }

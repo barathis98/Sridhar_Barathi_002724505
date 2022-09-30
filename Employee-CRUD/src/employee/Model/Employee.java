@@ -18,7 +18,12 @@ public class Employee {
     private String positionTitle;
     private long phNumber;
     private String emailAddress;
+    private String gender;
     
+    public String getGender()
+    {
+        return this.gender;
+    }
     public String getName()
     {
         return this.name;
@@ -90,5 +95,9 @@ public class Employee {
     public void setEmailAddress(String email)
     {
         this.emailAddress=email;
+    }
+    public void setGender(String gender)
+    {
+        this.gender=gender;
     }
 }

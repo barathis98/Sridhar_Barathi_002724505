@@ -208,69 +208,7 @@ public class UpdateJpanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (txtName.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Name feild cannot be empty");
-        }
-        else if (txtAge.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Age cannot be empty");
-        }
-        else if (txtEmpId.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "EmployeeId cannot be empty");
-        }
-        else if (txtLvl.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Level cannot be empty");
-        }
-        else if (txtStartDate.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Start Date cannot be empty");
-        }
-        else if (txtPhNo.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Start Date cannot be empty");
-        }
-        else if (txtEmail.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(this, "Email cannot be empty");
-        }
-        else
-        {
-            String name=txtName.getText();
-            int age=Integer.parseInt(txtAge.getText());
-            int empId=Integer.parseInt(txtEmpId.getText());
-            String lvl=txtLvl.getText();
-            String startDate=txtStartDate.getText();
-            long phNo=Long.parseLong(txtPhNo.getText());
-            String positionTitle=txtPositionTitle.getText();
-            String teamInfo=txtTeamInfo.getText();
-            String email=txtEmail.getText();
-
-            Employee emp=dict.addEmployee();
-            emp.setName(name);
-            emp.setEmployeeId(empId);
-            emp.setAge(age);
-            emp.setLevel(lvl);
-            emp.setStartDate(startDate);
-            emp.setPhNumber(phNo);
-            emp.setPositionTitle(positionTitle);
-            emp.setTeamInfo(teamInfo);
-            emp.setEmailAddress(email);
-            JOptionPane.showMessageDialog(this,"New Employee Details Added.");
-
-            txtName.setText("");
-            txtEmpId.setText("");
-            txtLvl.setText("");
-            txtStartDate.setText("");
-            txtPhNo.setText("");
-            txtPositionTitle.setText("");
-            txtTeamInfo.setText("");
-            txtEmail.setText("");
-            txtAge.setText("");
-
-        }
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

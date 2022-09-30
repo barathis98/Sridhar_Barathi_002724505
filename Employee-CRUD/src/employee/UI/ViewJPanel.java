@@ -6,6 +6,7 @@ package employee.UI;
 
 import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
+import javax.swing.JOptionPane;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -38,6 +39,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblEmployee = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
 
         jButton1.setText("View");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -52,30 +54,39 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "EmployeeId", "Name", "Age", "Gender", "Level", "Team Info"
+                "EmployeeId", "Name", "Email ", "Age", "Gender", "Level", "Team Info", "Phone Number", "Position Title", "Object"
             }
         ));
         tblEmployee.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jScrollPane4.setViewportView(tblEmployee);
 
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -83,7 +94,9 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -92,10 +105,29 @@ public class ViewJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex=tblEmployee.getSelectedRow();
+        if (selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this,"Select a row to delete");
+        }
+        else
+        {
+            DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
+            Employee emp=(Employee)model.getValueAt(selectedRowIndex,9);
+            System.out.print(emp);
+            dict.deleteEmp(emp);
+            JOptionPane.showMessageDialog(this, "Employee record deleted Successfully");
+            populateTable();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblEmployee;
     // End of variables declaration//GEN-END:variables
@@ -105,7 +137,7 @@ private void populateTable()
     model.setRowCount(0);
     for(Employee emp: dict.getEmployeeDirectory())
     {
-        Object[] row=new Object[10];
+        Object[] row=new Object[12];
         row[0]=emp.getemployeeId();
         row[1]=emp.getName();
         row[2]=emp.getAge();
@@ -115,6 +147,7 @@ private void populateTable()
         row[6]=emp.getTeamInfo();
         row[7]=emp.getLevel();
         row[8]=emp.getPositionTitle();
+        row[9]=emp;
         model.addRow(row);
     }
     

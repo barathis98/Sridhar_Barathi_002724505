@@ -7,6 +7,7 @@ package employee.UI;
 import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
 import javax.swing.JOptionPane;
+import employee.UI.MainScreen;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -103,6 +104,21 @@ public class ViewJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex=tblEmployee.getSelectedRow();
+        if (selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this,"Select a row to View");
+        }
+        else
+        {
+        DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
+        Employee emp=(Employee)model.getValueAt(selectedRowIndex,9);
+        UpdateFrame updateFrame=new UpdateFrame(emp);
+        System.out.println(emp.getName());
+        updateFrame.setVisible(true);
+        }
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

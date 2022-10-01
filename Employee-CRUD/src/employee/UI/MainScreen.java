@@ -15,6 +15,7 @@ public class MainScreen extends javax.swing.JFrame {
      * Creates new form MainScreen
      */
     EmployeeDirectory dict;
+    
     public MainScreen() {
         initComponents();
         dict=new EmployeeDirectory();
@@ -111,7 +112,7 @@ public class MainScreen extends javax.swing.JFrame {
         AddJPanel addPanel = new AddJPanel(dict);
         splitPane.setRightComponent(addPanel);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ViewJPanel viewPanel = new ViewJPanel(dict);

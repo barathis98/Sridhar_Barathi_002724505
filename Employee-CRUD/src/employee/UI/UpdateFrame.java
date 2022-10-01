@@ -6,6 +6,10 @@ package employee.UI;
 
 import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +29,9 @@ public class UpdateFrame extends javax.swing.JFrame {
         initComponents();
         this.emp=emp;
         btnSave.setVisible(false);
+        btnAttach.setVisible(false);
         setDefaultCloseOperation(UpdateFrame.DISPOSE_ON_CLOSE);
+        txtImage.setVisible(false);
         this.dict=dict;
         //System.out.print(emp);
     }
@@ -63,6 +69,9 @@ public class UpdateFrame extends javax.swing.JFrame {
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         btnSave = new javax.swing.JButton();
+        lblImage = new javax.swing.JLabel();
+        btnAttach = new javax.swing.JButton();
+        txtImage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -229,25 +238,46 @@ public class UpdateFrame extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
+        btnAttach.setText("Attach New");
+        btnAttach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttachActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(btnAttach))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAttach)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -271,6 +301,8 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtEmail.setEditable(true);
         btnSave.setVisible(true);
         btnUpdate.setVisible(false);
+        btnUpdate.setVisible(true);
+        txtImage.setVisible(true);
         
         
 
@@ -289,6 +321,10 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtLvl.setText(emp.getLevel());
         txtEmpId.setText(Integer.toString(emp.getemployeeId()));
         txtEmail.setText(emp.getEmailAddress());
+        ImageIcon icon1=new ImageIcon(emp.getImage());
+        Image image=icon1.getImage().getScaledInstance(lblImage.getWidth(),lblImage.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon icon=new ImageIcon(image);
+        lblImage.setIcon(icon);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -333,6 +369,7 @@ public class UpdateFrame extends javax.swing.JFrame {
             String positionTitle=txtPositionTitle.getText();
             String teamInfo=txtTeamInfo.getText();
             String email=txtEmail.getText();
+            String Image=txtImage.getText();
             
             
           
@@ -345,6 +382,7 @@ public class UpdateFrame extends javax.swing.JFrame {
             emp.setPositionTitle(positionTitle);
             emp.setTeamInfo(teamInfo);
             emp.setEmailAddress(email);
+            emp.setImage(Image);
             JOptionPane.showMessageDialog(this,"Employee Details Updated.");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -354,6 +392,20 @@ public class UpdateFrame extends javax.swing.JFrame {
        //MainScreen ms=new MainScreen();
        MainScreen.Update(dict);
     }//GEN-LAST:event_formWindowClosed
+
+    private void btnAttachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser=new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f=chooser.getSelectedFile();
+        String fileName=f.getAbsolutePath();
+        txtImage.setText(fileName);
+        //Image getAbsolutePath=null;
+        ImageIcon icon1=new ImageIcon(fileName);
+        Image image=icon1.getImage().getScaledInstance(lblImage.getWidth(),lblImage.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon icon=new ImageIcon(image);
+        lblImage.setIcon(icon);
+    }//GEN-LAST:event_btnAttachActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +444,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAttach;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
@@ -407,9 +460,11 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmpId;
+    private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtLvl;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPhNo;

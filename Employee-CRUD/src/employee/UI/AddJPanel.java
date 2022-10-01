@@ -102,8 +102,6 @@ public class AddJPanel extends javax.swing.JPanel {
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Female");
 
-        lblImage.setText("jLabel11");
-
         jButton2.setText("Attach");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,6 +256,7 @@ public class AddJPanel extends javax.swing.JPanel {
             String positionTitle=txtPositionTitle.getText();
             String teamInfo=txtTeamInfo.getText();
             String email=txtEmail.getText();
+            String image=txtImage.getText();
             
             
             Employee emp=dict.addEmployee();
@@ -270,6 +269,7 @@ public class AddJPanel extends javax.swing.JPanel {
             emp.setPositionTitle(positionTitle);
             emp.setTeamInfo(teamInfo);
             emp.setEmailAddress(email);
+            emp.setImage(image);
             JOptionPane.showMessageDialog(this,"New Employee Details Added.");
             
             txtName.setText("");
@@ -301,7 +301,7 @@ public class AddJPanel extends javax.swing.JPanel {
         File f=chooser.getSelectedFile();
         String fileName=f.getAbsolutePath();
         txtImage.setText(fileName);
-        Image getAbsolutePath=null;
+        //Image getAbsolutePath=null;
         ImageIcon icon1=new ImageIcon(fileName);
         Image image=icon1.getImage().getScaledInstance(lblImage.getWidth(),lblImage.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon icon=new ImageIcon(image);

@@ -19,7 +19,12 @@ public class Employee {
     private long phNumber;
     private String emailAddress;
     private String gender;
+    private String image;
     
+    public String getImage()
+    {
+        return this.image;
+    }
     public String getGender()
     {
         return this.gender;
@@ -99,5 +104,9 @@ public class Employee {
     public void setGender(String gender)
     {
         this.gender=gender;
+    }
+    public void setImage(String image)
+    {
+        this.image=image;
     }
 }

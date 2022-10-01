@@ -106,6 +106,12 @@ public class AddJPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Phone Number");
 
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("Email");
 
         jLabel9.setText("Position Title");
@@ -256,7 +262,7 @@ public class AddJPanel extends javax.swing.JPanel {
         }
         else if (txtPhNo.getText().equals(""))
         {
-            JOptionPane.showMessageDialog(this, "Start Date cannot be empty");
+            JOptionPane.showMessageDialog(this, "Phone Number cannot be empty");
         }
         else if (txtEmail.getText().equals(""))
         {
@@ -268,7 +274,11 @@ public class AddJPanel extends javax.swing.JPanel {
         }
         else if (!isNumeric(txtAge.getText()))
         {
-            JOptionPane.showMessageDialog(this, "Date is not Valid");
+            JOptionPane.showMessageDialog(this, "Age is not Valid");
+        }
+        else if(!isEmailValid(txtEmail.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a valid Email");
         }
         
         
@@ -339,6 +349,16 @@ public class AddJPanel extends javax.swing.JPanel {
             return false;
         }
 }
+    public static boolean isEmailValid(String email){  
+        String emailFormate ="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+(?:\\."  
+                + "[a-zA-Z0-9_!#$%&'*+/=?`{|}~^-]+)*@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$";  
+          
+        Pattern p = Pattern.compile(emailFormate);  
+        if(email == null){  
+        return false;  
+        }   
+        return p.matcher(email).matches();  
+    }  
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser=new JFileChooser();
@@ -377,6 +397,10 @@ public class AddJPanel extends javax.swing.JPanel {
             txtEmpId.setText("");
         }
     }//GEN-LAST:event_txtEmpIdKeyReleased
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

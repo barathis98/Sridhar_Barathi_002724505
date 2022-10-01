@@ -65,7 +65,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "EmployeeId", "Name", "Email ", "Age", "Gender", "Level", "Team Info", "Phone Number", "Position Title", "Object"
+                "EmployeeId", "Name", "Phone Number", "Email ", "Age", "Gender", "Level", "Team Info", "Position Title", "Object"
             }
         ));
         tblEmployee.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -91,23 +91,22 @@ public class ViewJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(54, 54, 54))))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel1)
                 .addGap(31, 31, 31)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,12 +192,12 @@ public void populateTable()
         Object[] row=new Object[12];
         row[0]=emp.getemployeeId();
         row[1]=emp.getName();
-        row[2]=emp.getAge();
-        row[3]=emp.getGender();
-        row[4]=emp.getEmailAddress();
-        row[5]=emp.getPhNumber();
-        row[6]=emp.getTeamInfo();
-        row[7]=emp.getLevel();
+        row[2]=emp.getPhNumber();
+        row[3]=emp.getEmailAddress();
+        row[4]=emp.getAge();
+        row[5]=emp.getGender();
+        row[6]=emp.getLevel();       
+        row[7]=emp.getTeamInfo();
         row[8]=emp.getPositionTitle();
         row[9]=emp;
         model.addRow(row);

@@ -113,8 +113,8 @@ public class ViewJPanel extends javax.swing.JPanel {
         {
         DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
         Employee emp=(Employee)model.getValueAt(selectedRowIndex,9);
-        UpdateFrame updateFrame=new UpdateFrame(emp);
-        System.out.println(emp.getName());
+        UpdateFrame updateFrame=new UpdateFrame(emp,dict);
+        //System.out.println(emp.getName());
         updateFrame.setVisible(true);
         }
         
@@ -147,7 +147,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable tblEmployee;
     // End of variables declaration//GEN-END:variables
-private void populateTable()
+public void populateTable()
 {
     DefaultTableModel model=(DefaultTableModel) tblEmployee.getModel();
     model.setRowCount(0);

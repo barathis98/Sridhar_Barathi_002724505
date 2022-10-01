@@ -5,6 +5,8 @@
 package employee.UI;
 
 import employee.Model.Employee;
+import employee.Model.EmployeeDirectory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,9 +19,14 @@ public class UpdateFrame extends javax.swing.JFrame {
      * 
      */
     Employee emp;
-    public UpdateFrame(Employee emp) {
+    EmployeeDirectory dict;
+    
+    public UpdateFrame(Employee emp,EmployeeDirectory dict) {
         initComponents();
         this.emp=emp;
+        btnSave.setVisible(false);
+        setDefaultCloseOperation(UpdateFrame.DISPOSE_ON_CLOSE);
+        this.dict=dict;
         //System.out.print(emp);
     }
 
@@ -39,7 +46,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtStartDate = new javax.swing.JTextField();
         txtLvl = new javax.swing.JTextField();
         txtTeamInfo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -55,9 +62,13 @@ public class UpdateFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -80,10 +91,10 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         txtTeamInfo.setEditable(false);
 
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
@@ -117,13 +128,22 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         jRadioButton2.setText("Female");
 
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnSave)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUpdate)
                 .addGap(117, 117, 117))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
@@ -203,7 +223,9 @@ public class UpdateFrame extends javax.swing.JFrame {
                     .addComponent(txtPositionTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdate)
+                    .addComponent(btnSave))
                 .addGap(34, 34, 34))
         );
 
@@ -235,7 +257,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmpIdActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
         txtName.setEditable(true);
         txtAge.setEditable(true);
@@ -247,9 +269,12 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtLvl.setEditable(true);
         txtEmpId.setEditable(true);
         txtEmail.setEditable(true);
+        btnSave.setVisible(true);
+        btnUpdate.setVisible(false);
+        
         
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
@@ -266,6 +291,69 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtEmail.setText(emp.getEmailAddress());
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        if (txtName.getText().equals(""))
+        {
+           JOptionPane.showMessageDialog(this, "Name feild cannot be empty"); 
+        }
+        else if (txtAge.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Age cannot be empty");
+        }
+        else if (txtEmpId.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "EmployeeId cannot be empty");
+        }
+        else if (txtLvl.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Level cannot be empty");
+        }
+        else if (txtStartDate.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Start Date cannot be empty");
+        }
+        else if (txtPhNo.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Start Date cannot be empty");
+        }
+        else if (txtEmail.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Email cannot be empty");
+        }
+        else
+        {
+            String name=txtName.getText();
+            int age=Integer.parseInt(txtAge.getText());
+            int empId=Integer.parseInt(txtEmpId.getText());
+            String lvl=txtLvl.getText();
+            String startDate=txtStartDate.getText();
+            long phNo=Long.parseLong(txtPhNo.getText());
+            String positionTitle=txtPositionTitle.getText();
+            String teamInfo=txtTeamInfo.getText();
+            String email=txtEmail.getText();
+            
+            
+          
+            emp.setName(name);
+            emp.setEmployeeId(empId);
+            emp.setAge(age);
+            emp.setLevel(lvl);
+            emp.setStartDate(startDate);
+            emp.setPhNumber(phNo);
+            emp.setPositionTitle(positionTitle);
+            emp.setTeamInfo(teamInfo);
+            emp.setEmailAddress(email);
+            JOptionPane.showMessageDialog(this,"Employee Details Updated.");
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+       //MainScreen ms=new MainScreen();
+       MainScreen.Update(dict);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -304,7 +392,8 @@ public class UpdateFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

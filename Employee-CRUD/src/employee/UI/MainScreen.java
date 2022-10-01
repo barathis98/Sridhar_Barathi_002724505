@@ -119,6 +119,12 @@ public class MainScreen extends javax.swing.JFrame {
         splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public static void Update(EmployeeDirectory dict1)
+    {
+        ViewJPanel viewPanel1 = new ViewJPanel(dict1);
+        splitPane.setRightComponent(viewPanel1);
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -159,6 +165,6 @@ public class MainScreen extends javax.swing.JFrame {
     private javax.swing.JPanel WorkArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JSplitPane splitPane;
+    private static javax.swing.JSplitPane splitPane;
     // End of variables declaration//GEN-END:variables
 }

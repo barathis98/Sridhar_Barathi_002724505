@@ -12,8 +12,13 @@ import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
 import java.awt.Image;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import java.time.format.DateTimeFormatter;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 public class AddJPanel extends javax.swing.JPanel {
 
@@ -66,6 +71,17 @@ public class AddJPanel extends javax.swing.JPanel {
         txtEmpId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpIdActionPerformed(evt);
+            }
+        });
+        txtEmpId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmpIdKeyReleased(evt);
+            }
+        });
+
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
             }
         });
 
@@ -217,6 +233,7 @@ public class AddJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         if (txtName.getText().equals(""))
         {
            JOptionPane.showMessageDialog(this, "Name feild cannot be empty"); 
@@ -245,6 +262,16 @@ public class AddJPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(this, "Email cannot be empty");
         }
+        else if (!isDateValid(txtStartDate.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Date is not Valid");
+        }
+        else if (!isNumeric(txtAge.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Date is not Valid");
+        }
+        
+        
         else
         {
             String name=txtName.getText();
@@ -293,7 +320,25 @@ public class AddJPanel extends javax.swing.JPanel {
     private void txtEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmpIdActionPerformed
-
+    public static boolean isNumeric(String str) { 
+  try {  
+    Double.parseDouble(str);  
+    return true;
+  } catch(NumberFormatException e){  
+    return false;  
+  }  
+    }
+    public static boolean isDateValid(String date) 
+{
+        try {
+            DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+            df.setLenient(false);
+            df.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+}
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser=new JFileChooser();
@@ -307,6 +352,31 @@ public class AddJPanel extends javax.swing.JPanel {
         ImageIcon icon=new ImageIcon(image);
         lblImage.setIcon(icon);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        String age =txtAge.getText();
+        if (age.length()>3)
+        {
+            JOptionPane.showMessageDialog(this,"Enter Valid Age.");
+            
+        }
+        if (!isNumeric(age)& !age.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Age");
+        }
+        
+    }//GEN-LAST:event_txtAgeKeyReleased
+
+    private void txtEmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpIdKeyReleased
+        // TODO add your handling code here:
+        String age =txtEmpId.getText();
+        if (!isNumeric(age)& !age.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Invalid EmployeeID");
+            txtEmpId.setText("");
+        }
+    }//GEN-LAST:event_txtEmpIdKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

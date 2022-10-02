@@ -66,14 +66,14 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtPositionTitle = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         btnSave = new javax.swing.JButton();
+        txtGender = new javax.swing.JTextField();
         lblImage = new javax.swing.JLabel();
         btnAttach = new javax.swing.JButton();
         txtImage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 153, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -100,7 +100,10 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         txtTeamInfo.setEditable(false);
 
+        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/updated (1).png"))); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -133,16 +136,17 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         jLabel10.setText("Gender");
 
-        jRadioButton1.setText("Male");
-
-        jRadioButton2.setText("Female");
-
+        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/diskette.png"))); // NOI18N
         btnSave.setText("Save");
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
+
+        txtGender.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,13 +182,9 @@ public class UpdateFrame extends javax.swing.JFrame {
                     .addComponent(txtEmpId)
                     .addComponent(txtAge)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2))
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtGender))
                 .addGap(47, 47, 47))
         );
         jPanel1Layout.setVerticalGroup(
@@ -198,11 +198,10 @@ public class UpdateFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel10)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,7 +237,10 @@ public class UpdateFrame extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
+        btnAttach.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnAttach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/attach-paperclip-symbol.png"))); // NOI18N
         btnAttach.setText("Attach New");
+        btnAttach.setOpaque(true);
         btnAttach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAttachActionPerformed(evt);
@@ -252,16 +254,12 @@ public class UpdateFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(btnAttach))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAttach, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtImage))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +275,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                         .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAttach)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -303,6 +301,8 @@ public class UpdateFrame extends javax.swing.JFrame {
         btnUpdate.setVisible(false);
         btnUpdate.setVisible(true);
         txtImage.setVisible(true);
+        btnAttach.setVisible(true);
+        txtGender.setEditable(true);
         
         
 
@@ -325,6 +325,8 @@ public class UpdateFrame extends javax.swing.JFrame {
         Image image=icon1.getImage().getScaledInstance(lblImage.getWidth(),lblImage.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon icon=new ImageIcon(image);
         lblImage.setIcon(icon);
+        txtGender.setText(emp.getGender());
+        btnAttach.setVisible(false);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -358,8 +360,11 @@ public class UpdateFrame extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Email cannot be empty");
         }
-        else
+        else 
         {
+            int res=JOptionPane.showConfirmDialog(this, "Do you want to save the Changes?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (res==JOptionPane.YES_OPTION)
+            {
             String name=txtName.getText();
             int age=Integer.parseInt(txtAge.getText());
             int empId=Integer.parseInt(txtEmpId.getText());
@@ -384,6 +389,8 @@ public class UpdateFrame extends javax.swing.JFrame {
             emp.setEmailAddress(email);
             emp.setImage(Image);
             JOptionPane.showMessageDialog(this,"Employee Details Updated.");
+            }
+            
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -458,12 +465,11 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblImage;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmpId;
+    private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtImage;
     private javax.swing.JTextField txtLvl;
     private javax.swing.JTextField txtName;

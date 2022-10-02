@@ -74,12 +74,14 @@ public class ViewJPanel extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/updated (1).png"))); // NOI18N
         jButton1.setText("View");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane4.setAutoscrolls(true);
@@ -120,12 +122,18 @@ public class ViewJPanel extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/delete (1).png"))); // NOI18N
         jButton2.setText("Delete");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -133,7 +141,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Search");
+        jLabel1.setText("Master Search");
 
         lblUpdate.setText("View Employee to update their details.");
 
@@ -153,35 +161,36 @@ public class ViewJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(29, 29, 29)
                         .addComponent(lblUpdate)
                         .addGap(162, 162, 162)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(192, 192, 192)
+                                .addGap(198, 198, 198)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(lblView, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
+                                .addGap(85, 85, 85)
                                 .addComponent(jLabel1)
-                                .addGap(28, 28, 28)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(42, 42, 42)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
@@ -247,16 +256,19 @@ public class ViewJPanel extends javax.swing.JPanel {
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int res=JOptionPane.showConfirmDialog(this, "Are you sure you want to permanently remove this record?", "Deletion" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (res==JOptionPane.YES_OPTION)
-        {
-        int selectedRowIndex=tblEmployee.getSelectedRow();
+         int selectedRowIndex=tblEmployee.getSelectedRow();
         if (selectedRowIndex<0)
         {
             JOptionPane.showMessageDialog(this,"Select a row to delete");
         }
-        else
+         else
         {
+        int res=JOptionPane.showConfirmDialog(this, "Are you sure you want to permanently remove this record?", "Deletion" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
+       
+        
+       
             DefaultTableModel model = (DefaultTableModel) tblEmployee.getModel();
             Employee emp=(Employee)model.getValueAt(selectedRowIndex,9);
             //System.out.print(emp);
@@ -282,6 +294,10 @@ public class ViewJPanel extends javax.swing.JPanel {
         ImageIcon icon=new ImageIcon(image);
         lblImage.setIcon(icon);
     }//GEN-LAST:event_tblEmployeeMouseClicked
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

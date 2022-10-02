@@ -6,6 +6,9 @@ package employee.UI;
 
 import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
+import static employee.UI.AddJPanel.isDateValid;
+import static employee.UI.AddJPanel.isEmailValid;
+import static employee.UI.AddJPanel.isNumeric;
 import java.awt.Image;
 import java.io.File;
 import java.text.DateFormat;
@@ -15,9 +18,11 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 /**
  *
@@ -99,8 +104,18 @@ public class UpdateFrame extends javax.swing.JFrame {
                 txtEmpIdActionPerformed(evt);
             }
         });
+        txtEmpId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtEmpIdKeyReleased(evt);
+            }
+        });
 
         txtAge.setEditable(false);
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
 
         txtStartDate.setEditable(false);
 
@@ -328,7 +343,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         //System.out.println(emp.getAge());
-        DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");  
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");  
         txtName.setText(this.emp.getName());
         txtAge.setText(Integer.toString(this.emp.getAge()));
         //txtGender.setText(this.emp.getGender());
@@ -378,6 +393,22 @@ public class UpdateFrame extends javax.swing.JFrame {
         else if (txtEmail.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "Email cannot be empty");
+        }
+        else if (!isDateValid(txtStartDate.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Date is not Valid","Invalid Data",ERROR_MESSAGE);
+        }
+        else if (!isNumeric(txtAge.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Age is not Valid","Invalid Data",ERROR_MESSAGE);
+        }
+        else if(!isEmailValid(txtEmail.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a valid Email","Invalid Data",ERROR_MESSAGE);
+        }
+        else if (!Pattern.matches("[0-9]{10}",txtPhNo.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a valid Phone Number","Invalid Data",ERROR_MESSAGE);
         }
         else 
         {
@@ -439,6 +470,32 @@ public class UpdateFrame extends javax.swing.JFrame {
         ImageIcon icon=new ImageIcon(image);
         lblImage.setIcon(icon);
     }//GEN-LAST:event_btnAttachActionPerformed
+
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        String age =txtAge.getText();
+        if (age.length()>3)
+        {
+            JOptionPane.showMessageDialog(this,"Enter Valid Age.");
+            txtAge.setText("");
+            
+        }
+        if (!isNumeric(age)& !age.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Age");
+            txtAge.setText("");
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
+
+    private void txtEmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmpIdKeyReleased
+        // TODO add your handling code here:
+        String age =txtEmpId.getText();
+        if (!isNumeric(age)& !age.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Invalid EmployeeID");
+            txtEmpId.setText("");
+        }
+    }//GEN-LAST:event_txtEmpIdKeyReleased
 
     /**
      * @param args the command line arguments

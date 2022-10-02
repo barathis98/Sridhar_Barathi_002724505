@@ -40,9 +40,11 @@ public class MainScreen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
+        setResizable(false);
 
         ControlPanel.setBackground(new java.awt.Color(255, 255, 255));
+        ControlPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Options", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         ControlPanel.setPreferredSize(new java.awt.Dimension(150, 431));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -91,7 +93,7 @@ public class MainScreen extends javax.swing.JFrame {
             ControlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         ControlPanelLayout.setVerticalGroup(
@@ -105,7 +107,7 @@ public class MainScreen extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(206, Short.MAX_VALUE))
         );
 
         ControlPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton4});
@@ -113,6 +115,7 @@ public class MainScreen extends javax.swing.JFrame {
         splitPane.setLeftComponent(ControlPanel);
 
         WorkArea.setBackground(new java.awt.Color(102, 255, 153));
+        WorkArea.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         WorkArea.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -123,7 +126,7 @@ public class MainScreen extends javax.swing.JFrame {
         WorkAreaLayout.setHorizontalGroup(
             WorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WorkAreaLayout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
+                .addContainerGap(252, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(247, 247, 247))
         );
@@ -132,7 +135,7 @@ public class MainScreen extends javax.swing.JFrame {
             .addGroup(WorkAreaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(561, Short.MAX_VALUE))
+                .addContainerGap(557, Short.MAX_VALUE))
         );
 
         splitPane.setRightComponent(WorkArea);
@@ -159,25 +162,25 @@ public class MainScreen extends javax.swing.JFrame {
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPanel = new ViewJPanel(dict);
+        ViewJPanel viewPanel = new ViewJPanel(dict,0);
         splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPanel = new ViewJPanel(dict);
+        ViewJPanel viewPanel = new ViewJPanel(dict,2);
         splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ViewJPanel viewPanel = new ViewJPanel(dict);
+        ViewJPanel viewPanel = new ViewJPanel(dict,1);
         splitPane.setRightComponent(viewPanel);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public static void Update(EmployeeDirectory dict1)
     {
-        ViewJPanel viewPanel1 = new ViewJPanel(dict1);
+        ViewJPanel viewPanel1 = new ViewJPanel(dict1,0);
         splitPane.setRightComponent(viewPanel1);
         
     }

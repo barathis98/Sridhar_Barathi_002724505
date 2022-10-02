@@ -4,6 +4,8 @@
  */
 package employee.Model;
 
+import java.util.Date;
+
 /**
  *
  * @author BARATHI
@@ -12,7 +14,7 @@ public class Employee {
     private String name;
     private int employeeId;
     private int age;
-    private String startDate;
+    private Date startDate;
     private String level;
     private String teamInfo;
     private String positionTitle;
@@ -41,7 +43,7 @@ public class Employee {
     {
         return this.age;
     }
-    public String getStartDate()
+    public Date getStartDate()
     {
         return this.startDate;
     }
@@ -77,7 +79,7 @@ public class Employee {
     {
         this.age=age;
     }
-    public void setStartDate(String sDate)
+    public void setStartDate(Date sDate)
     {
         this.startDate=sDate;
     }

@@ -8,6 +8,13 @@ import employee.Model.Employee;
 import employee.Model.EmployeeDirectory;
 import java.awt.Image;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -311,12 +318,13 @@ public class UpdateFrame extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         //System.out.println(emp.getAge());
+        DateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");  
         txtName.setText(this.emp.getName());
         txtAge.setText(Integer.toString(this.emp.getAge()));
         //txtGender.setText(this.emp.getGender());
         txtPhNo.setText(Integer.toString((int) emp.getPhNumber()));
         txtPositionTitle.setText(emp.getPositionTitle());
-        txtStartDate.setText(emp.getStartDate());
+        txtStartDate.setText(dateFormat.format(emp.getStartDate()));
         txtTeamInfo.setText(emp.getTeamInfo());
         txtLvl.setText(emp.getLevel());
         txtEmpId.setText(Integer.toString(emp.getemployeeId()));
@@ -365,30 +373,35 @@ public class UpdateFrame extends javax.swing.JFrame {
             int res=JOptionPane.showConfirmDialog(this, "Do you want to save the Changes?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (res==JOptionPane.YES_OPTION)
             {
-            String name=txtName.getText();
-            int age=Integer.parseInt(txtAge.getText());
-            int empId=Integer.parseInt(txtEmpId.getText());
-            String lvl=txtLvl.getText();
-            String startDate=txtStartDate.getText();
-            long phNo=Long.parseLong(txtPhNo.getText());
-            String positionTitle=txtPositionTitle.getText();
-            String teamInfo=txtTeamInfo.getText();
-            String email=txtEmail.getText();
-            String Image=txtImage.getText();
-            
-            
-          
-            emp.setName(name);
-            emp.setEmployeeId(empId);
-            emp.setAge(age);
-            emp.setLevel(lvl);
-            emp.setStartDate(startDate);
-            emp.setPhNumber(phNo);
-            emp.setPositionTitle(positionTitle);
-            emp.setTeamInfo(teamInfo);
-            emp.setEmailAddress(email);
-            emp.setImage(Image);
-            JOptionPane.showMessageDialog(this,"Employee Details Updated.");
+                try {
+                    SimpleDateFormat formatter = new SimpleDateFormat("mm/DD/YYYY", Locale.ENGLISH);
+                    String name=txtName.getText();
+                    int age=Integer.parseInt(txtAge.getText());
+                    int empId=Integer.parseInt(txtEmpId.getText());
+                    String lvl=txtLvl.getText();
+                    Date startDate=formatter.parse(txtStartDate.getText());
+                    long phNo=Long.parseLong(txtPhNo.getText());
+                    String positionTitle=txtPositionTitle.getText();
+                    String teamInfo=txtTeamInfo.getText();
+                    String email=txtEmail.getText();
+                    String Image=txtImage.getText();
+                    
+                    
+                    
+                    emp.setName(name);
+                    emp.setEmployeeId(empId);
+                    emp.setAge(age);
+                    emp.setLevel(lvl);
+                    emp.setStartDate(startDate);
+                    emp.setPhNumber(phNo);
+                    emp.setPositionTitle(positionTitle);
+                    emp.setTeamInfo(teamInfo);
+                    emp.setEmailAddress(email);
+                    emp.setImage(Image);
+                    JOptionPane.showMessageDialog(this,"Employee Details Updated.");
+                } catch (ParseException ex) {
+                    Logger.getLogger(UpdateFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
         }

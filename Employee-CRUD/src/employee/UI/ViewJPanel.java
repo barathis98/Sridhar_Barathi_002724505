@@ -26,6 +26,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     public ViewJPanel(EmployeeDirectory dict,int dFlag) {
         initComponents();
         this.dict=dict;
+        lblView.setVisible(false);
         populateTable();
         
         if (dFlag==1)
@@ -36,6 +37,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         if (dFlag==2)
         {
             jButton2.setVisible(false);
+            
         }
         
     }
@@ -57,6 +59,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblUpdate = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblView = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 255, 153));
         setPreferredSize(new java.awt.Dimension(666, 508));
@@ -76,13 +79,13 @@ public class ViewJPanel extends javax.swing.JPanel {
 
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "EmployeeId", "Name", "Phone Number", "Email ", "Age", "Gender", "Level", "Team Info", "Position Title", "Object"
+                "EmployeeId", "Name", "Phone Number", "Email ", "Start Date", "Age", "Gender", "Level", "Team Info", "Object", "Position Title"
             }
         ));
         tblEmployee.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
@@ -111,30 +114,38 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("HUMAN RESOURCES");
 
+        lblView.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addComponent(lblUpdate)
-                        .addGap(151, 151, 151)
+                        .addGap(162, 162, 162)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(106, 106, 106)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(28, 28, 28)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(lblView, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2});
@@ -142,24 +153,23 @@ public class ViewJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblView)
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(lblUpdate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))))
-                .addContainerGap(264, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton2)
+                        .addComponent(jButton1))
+                    .addComponent(lblUpdate))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2});
@@ -227,6 +237,7 @@ public class ViewJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblUpdate;
+    private javax.swing.JLabel lblView;
     private javax.swing.JTable tblEmployee;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
@@ -241,12 +252,13 @@ public void populateTable()
         row[1]=emp.getName();
         row[2]=emp.getPhNumber();
         row[3]=emp.getEmailAddress();
-        row[4]=emp.getAge();
-        row[5]=emp.getGender();
-        row[6]=emp.getLevel();       
-        row[7]=emp.getTeamInfo();
-        row[8]=emp.getPositionTitle();
+        row[4]=emp.getStartDate();
+        row[5]=emp.getAge();
+        row[6]=emp.getGender();
+        row[7]=emp.getLevel();       
+        row[8]=emp.getTeamInfo();
         row[9]=emp;
+        row[10]=emp.getPositionTitle();       
         model.addRow(row);
     }
     

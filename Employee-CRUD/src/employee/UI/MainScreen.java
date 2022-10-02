@@ -120,7 +120,7 @@ public class MainScreen extends javax.swing.JFrame {
 
         splitPane.setLeftComponent(ControlPanel);
 
-        WorkArea.setBackground(new java.awt.Color(102, 255, 153));
+        WorkArea.setBackground(new java.awt.Color(153, 153, 255));
         WorkArea.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         WorkArea.setForeground(new java.awt.Color(255, 255, 255));
 

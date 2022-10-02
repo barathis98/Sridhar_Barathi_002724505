@@ -89,7 +89,7 @@ public class Employee {
     }
     public void setTeamInfo(String teamInfo)
     {
-        this.level=teamInfo;
+        this.teamInfo=teamInfo;
     }
     public void setPositionTitle(String position)
     {

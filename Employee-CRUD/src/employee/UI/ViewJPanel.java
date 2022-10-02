@@ -83,6 +83,7 @@ public class ViewJPanel extends javax.swing.JPanel {
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane4.setAutoscrolls(true);
 
+        tblEmployee.setBorder(new javax.swing.border.MatteBorder(null));
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},

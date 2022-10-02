@@ -339,6 +339,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         txtLvl.setText(emp.getLevel());
         txtEmpId.setText(Integer.toString(emp.getemployeeId()));
         txtEmail.setText(emp.getEmailAddress());
+        txtImage.setText(emp.getImage());
         ImageIcon icon1=new ImageIcon(emp.getImage());
         Image image=icon1.getImage().getScaledInstance(lblImage.getWidth(),lblImage.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon icon=new ImageIcon(image);

@@ -13,7 +13,7 @@ public class EmployeeDirectory {
     private ArrayList <Employee> list;
     public EmployeeDirectory()
     {
-        this.list=new ArrayList<Employee>();       
+        this.list=new ArrayList<Employee>();
     }
     public ArrayList<Employee> getEmployeeList()
     {

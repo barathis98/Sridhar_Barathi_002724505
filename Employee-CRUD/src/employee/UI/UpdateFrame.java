@@ -84,7 +84,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         btnAttach = new javax.swing.JButton();
         txtImage = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        lblOptional = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 255));
@@ -266,6 +266,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         btnAttach.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAttach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/attach-paperclip-symbol.png"))); // NOI18N
         btnAttach.setText("Attach New");
+        btnAttach.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAttach.setOpaque(true);
         btnAttach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,8 +277,8 @@ public class UpdateFrame extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setText("Employee Information");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("(Optional)");
+        lblOptional.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblOptional.setText("(Optional)");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -297,7 +298,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                                     .addComponent(txtImage, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(51, 51, 51)
-                                .addComponent(jLabel12))))
+                                .addComponent(lblOptional))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addComponent(jLabel11)))
@@ -318,7 +319,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAttach)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel12)))
+                        .addComponent(lblOptional)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -348,6 +349,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         btnAttach.setVisible(true);
         txtGender.setEditable(true);
         btnUpdate.setVisible(false);
+        lblOptional.setVisible(true);
         
         
 
@@ -374,6 +376,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         lblImage.setIcon(icon);
         txtGender.setText(emp.getGender());
         btnAttach.setVisible(false);
+        lblOptional.setVisible(false);
         
     }//GEN-LAST:event_formWindowOpened
 
@@ -553,7 +556,6 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -564,6 +566,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblOptional;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmpId;

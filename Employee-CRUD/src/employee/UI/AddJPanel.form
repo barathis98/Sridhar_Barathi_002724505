@@ -200,6 +200,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtStartDate">
+      <Properties>
+        <Property name="toolTipText" type="java.lang.String" value="MM/DD/YYYY"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLvl">
     </Component>
@@ -317,8 +320,8 @@
           <Color blue="e3" green="e3" id="Control Highlight" palette="2" red="e3" type="palette"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder/>
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
           </Border>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>

@@ -102,6 +102,8 @@ public class AddJPanel extends javax.swing.JPanel {
             }
         });
 
+        txtStartDate.setToolTipText("MM/DD/YYYY");
+
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/add (1).png"))); // NOI18N
         jButton1.setText("Add");
@@ -149,7 +151,7 @@ public class AddJPanel extends javax.swing.JPanel {
         jLabel10.setText("Gender");
 
         lblImage.setBackground(java.awt.SystemColor.controlHighlight);
-        lblImage.setBorder(new javax.swing.border.MatteBorder(null));
+        lblImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblImage.setOpaque(true);
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

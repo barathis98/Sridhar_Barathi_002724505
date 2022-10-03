@@ -80,6 +80,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         txtGender = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         lblImage = new javax.swing.JLabel();
         btnAttach = new javax.swing.JButton();
         txtImage = new javax.swing.JTextField();
@@ -172,6 +173,15 @@ public class UpdateFrame extends javax.swing.JFrame {
 
         txtGender.setEditable(false);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cancel.png"))); // NOI18N
+        jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -181,7 +191,9 @@ public class UpdateFrame extends javax.swing.JFrame {
                 .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
-                .addGap(117, 117, 117))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(30, 30, 30))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(93, 93, 93)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,6 +223,9 @@ public class UpdateFrame extends javax.swing.JFrame {
                     .addComponent(txtGender))
                 .addGap(47, 47, 47))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSave, btnUpdate, jButton1});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -257,9 +272,12 @@ public class UpdateFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
-                    .addComponent(btnSave))
+                    .addComponent(btnSave)
+                    .addComponent(jButton1))
                 .addGap(34, 34, 34))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSave, btnUpdate, jButton1});
 
         lblImage.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -307,7 +325,7 @@ public class UpdateFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,7 +338,7 @@ public class UpdateFrame extends javax.swing.JFrame {
                         .addComponent(btnAttach)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblOptional)))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -513,6 +531,13 @@ public class UpdateFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtEmpIdKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -553,6 +578,7 @@ public class UpdateFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAttach;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

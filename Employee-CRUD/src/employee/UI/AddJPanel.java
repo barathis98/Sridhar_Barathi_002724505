@@ -399,6 +399,7 @@ public class AddJPanel extends javax.swing.JPanel {
                 txtTeamInfo.setText("");
                 txtEmail.setText("");
                 txtAge.setText("");
+                txtImage.setText("");
             } catch (ParseException ex) {
                 Logger.getLogger(AddJPanel.class.getName()).log(Level.SEVERE, null, ex);
             }

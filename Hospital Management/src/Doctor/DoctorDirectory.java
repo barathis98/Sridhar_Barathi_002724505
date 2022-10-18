@@ -4,10 +4,13 @@
  */
 package Doctor;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author BARATHI
  */
 public class DoctorDirectory {
+    private ArrayList <Doctor> list;
     
 }

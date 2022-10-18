@@ -17,8 +17,10 @@ public class Registration extends javax.swing.JFrame {
     /**
      * Creates new form Registration
      */
-    public Registration() {
-        
+    int s;
+    private String insertQuery;
+    public Registration(int s) {
+        this.s=s;
         
         initComponents();
     }
@@ -64,18 +66,18 @@ public class Registration extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPass, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(btnRegister)))
@@ -110,9 +112,17 @@ public class Registration extends javax.swing.JFrame {
             //Connection con=null;
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
+            //String inserQuery;
             
            // String insertQuery="insert into Doctor (Name,UserName,Password) values("+txtName.getText()+","+txtUname.getText()+","+txtPass.getText()+")";
-           String insertQuery="insert into Doctor (Name,UserName,Password) values('"+txtName.getText().trim()+"','"+txtUname.getText().trim()+"','"+txtPass.getText().trim()+"')";
+           if (s==1)
+           {
+            insertQuery="insert into Doctor (Name,UserName,Password) values('"+txtName.getText().trim()+"','"+txtUname.getText().trim()+"','"+txtPass.getText().trim()+"')";
+           }
+           else if(s==0)
+           {
+            insertQuery="insert into Patient (Name,UserName,Password) values('"+txtName.getText().trim()+"','"+txtUname.getText().trim()+"','"+txtPass.getText().trim()+"')";   
+           }
             stmt.executeUpdate(insertQuery);
             stmt.close();
             con.close();
@@ -150,11 +160,7 @@ public class Registration extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Registration().setVisible(true);
-            }
-        });
+      
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -19,7 +19,7 @@ public class HospitalManagement {
         // TODO code application logic here
         MainScreen ms=new MainScreen();
         ms.setVisible(true);
-        LoginPanel lp=new LoginPanel();
+        LoginPanelPatient lp=new LoginPanelPatient();
         ms.add(lp,BorderLayout.CENTER);
     }
     

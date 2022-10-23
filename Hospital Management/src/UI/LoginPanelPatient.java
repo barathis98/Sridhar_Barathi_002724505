@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package hospital.management;
+package UI;
 
 import SQLConnection.SQLConnection;
 import java.sql.Connection;
@@ -17,12 +17,12 @@ import javax.swing.SwingUtilities;
  *
  * @author BARATHI
  */
-public class LoginPanelDoctor extends javax.swing.JPanel {
+public class LoginPanelPatient extends javax.swing.JPanel {
 
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanelDoctor() {
+    public LoginPanelPatient() {
         initComponents();
     }
 
@@ -68,15 +68,15 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(127, 127, 127)
+                .addGap(138, 138, 138)
                 .addComponent(btnLogin)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,11 +101,11 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jButton1))
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,7 +115,7 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password from Patient where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
@@ -123,8 +123,8 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             if (rst.next())
             {
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
-                ViewPatients vp=new ViewPatients();
-                vp.setVisible(true);
+                ViewDoctor vd=new ViewDoctor();
+                vd.setVisible(true);
                 MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 topFrame.dispose();
                 topFrame.setVisible(false);
@@ -142,19 +142,20 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             stmt.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(LoginPanelDoctor.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPanelPatient.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:s
-        Registration rs=new Registration(1);
+        Registration rs=new Registration(0);
         rs.setVisible(true);
         MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
         topFrame.dispose();
         topFrame.setVisible(false);
-
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

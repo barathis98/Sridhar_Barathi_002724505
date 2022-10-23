@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package hospital.management;
+package UI;
 
+import Patient.PatientDirectory;
 import SQLConnection.SQLConnection;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -17,12 +18,13 @@ import javax.swing.SwingUtilities;
  *
  * @author BARATHI
  */
-public class LoginPanelPatient extends javax.swing.JPanel {
+public class LoginPanelDoctor extends javax.swing.JPanel {
 
     /**
      * Creates new form LoginPanel
      */
-    public LoginPanelPatient() {
+    PatientDirectory pd;
+    public LoginPanelDoctor() {
         initComponents();
     }
 
@@ -42,6 +44,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setText("UserName");
 
@@ -63,35 +66,41 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setText("Doctor Login");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(138, 138, 138)
-                .addComponent(btnLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
-                            .addComponent(txtPass))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                .addComponent(txtPass)))))
                 .addGap(124, 124, 124))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(btnLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -101,11 +110,11 @@ public class LoginPanelPatient extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jButton1))
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,7 +124,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from Patient where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
@@ -123,8 +132,8 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             if (rst.next())
             {
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
-                ViewDoctor vd=new ViewDoctor();
-                vd.setVisible(true);
+                ViewPatients vp=new ViewPatients(pd);
+                vp.setVisible(true);
                 MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 topFrame.dispose();
                 topFrame.setVisible(false);
@@ -142,20 +151,18 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             stmt.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(LoginPanelPatient.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPanelDoctor.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:s
-        Registration rs=new Registration(0);
+        Registration rs=new Registration(1);
         rs.setVisible(true);
         MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
         topFrame.dispose();
         topFrame.setVisible(false);
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -165,6 +172,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables

@@ -4,13 +4,17 @@
  */
 package UI;
 
+import Doctor.Doctor;
+import Doctor.DoctorDirectory;
 import SQLConnection.SQLConnection;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,8 +26,11 @@ public class ViewDoctor extends javax.swing.JFrame {
     /**
      * Creates new form ViewDoctor
      */
+    DoctorDirectory dd;
+    ArrayList<Doctor > dlist;
     public ViewDoctor() {
         initComponents();
+        dd=new DoctorDirectory();
     }
 
     /**
@@ -37,6 +44,7 @@ public class ViewDoctor extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDoctor = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -53,18 +61,30 @@ public class ViewDoctor extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Doctor Name", "Title 2", "Title 3", "Hospital Name"
             }
         ));
         jScrollPane1.setViewportView(tblDoctor);
+
+        jButton1.setText("Book Appointment");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(309, 309, 309)
+                        .addComponent(jButton1)))
                 .addContainerGap(254, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -72,7 +92,9 @@ public class ViewDoctor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton1)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,6 +104,19 @@ public class ViewDoctor extends javax.swing.JFrame {
         PopulateTable();
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex=tblDoctor.getSelectedRow();
+        if (selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this,"Select a Doctor to book appointment");
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this,"Appointment booked successfully");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,7 +158,22 @@ public class ViewDoctor extends javax.swing.JFrame {
     
     public void PopulateTable()
     {
-        try {
+        dd.getDoctorDirectory();
+        DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
+        model.setRowCount(0);
+        for(Doctor d: dd.getList())
+        {
+             Object[] row=new Object[9];
+             row[0]=d.getName();
+             row[1]=d.getPhno();
+             row[2]=d.getSpecialization();
+             row[3]=d.getCity();
+             row[4]=d.getHospitalName();
+             row[5]=d;
+             model.addRow(row);
+        }
+        
+       /* try {
             int i;
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
@@ -154,10 +204,11 @@ public class ViewDoctor extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(ViewDoctor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDoctor;
     // End of variables declaration//GEN-END:variables

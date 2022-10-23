@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Doctor.DoctorDirectory;
 import SQLConnection.SQLConnection;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -22,8 +23,11 @@ public class LoginPanelPatient extends javax.swing.JPanel {
     /**
      * Creates new form LoginPanel
      */
+    DoctorDirectory dd;
     public LoginPanelPatient() {
         initComponents();
+        dd=new DoctorDirectory();
+        
     }
 
     /**

@@ -13,6 +13,33 @@ public class Doctor {
     String username;
     String password;
     int phno;
+    String city;
+    String specialization;
+    String hospitalName;
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
+    }
+
+    public String getSpecialization() {
+        return specialization;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCity() {
+        return city;
+    }
 
     public void setName(String name) {
         this.name = name;

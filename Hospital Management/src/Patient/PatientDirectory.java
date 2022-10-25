@@ -52,11 +52,15 @@ public class PatientDirectory {
              while(st.next())
              {
                  Patient p=new Patient();
+                 
                  p.setName(st.getString("Name"));
+                
+                 
                  p.setCity(st.getString("City"));
                  p.setAge(st.getInt("Age"));
                  p.setPatientID(st.getInt("Patient Id"));
-                  
+                 patientDirectory.add(p);
+           
              }
              
         } catch (SQLException ex) {

@@ -30,7 +30,7 @@ public class ViewPatients extends javax.swing.JFrame {
      * Creates new form ViewPatients
      */
     PatientDirectory pd;
-    public ViewPatients(PatientDirectory pd) {
+    public ViewPatients() {
         pd=new PatientDirectory();
         initComponents();
         
@@ -237,6 +237,8 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
         // TODO add your handling code here:
+        DefaultTableModel model=(DefaultTableModel) tblPatients.getModel();
+        model.setRowCount(0);
         populateTable();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
@@ -478,18 +480,21 @@ public class ViewPatients extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public void populateTable()
     {
-        pd.getDbPatientDirectory();
+         pd.getDbPatientDirectory();
          DefaultTableModel model=(DefaultTableModel) tblPatients.getModel();
         model.setRowCount(0);
+        System.out.println("Inside populate");
+        System.out.print(pd);
         for(Patient p: pd.getPatientDirectory())
         {
+            System.out.println("Inside loop");
+             //System.out.println(p.getName());
              Object[] row=new Object[9];
              row[0]=p.getName();
              row[1]=p.getAge();
              row[2]=p.getCity();
              row[3]=p.getPatientID();
              row[4]=p.getCommunity();
-            
              row[5]=p;
              model.addRow(row);
         }

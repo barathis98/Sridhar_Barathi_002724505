@@ -4,6 +4,7 @@
  */
 package UI;
 
+import Doctor.Doctor;
 import Encounter.Encounter;
 import Patient.Patient;
 import Patient.PatientDirectory;
@@ -30,7 +31,7 @@ public class ViewPatients extends javax.swing.JFrame {
      */
     PatientDirectory pd;
     public ViewPatients(PatientDirectory pd) {
-        this.pd=pd;
+        pd=new PatientDirectory();
         initComponents();
         
     }
@@ -50,7 +51,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnDeleteVital = new javax.swing.JButton();
         btnAddVitals = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblViewPatients = new javax.swing.JTable();
+        tblPatients = new javax.swing.JTable();
         btnEditVital = new javax.swing.JButton();
         btnViewVitals = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -105,7 +106,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
-        tblViewPatients.setModel(new javax.swing.table.DefaultTableModel(
+        tblPatients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -122,7 +123,7 @@ public class ViewPatients extends javax.swing.JFrame {
                 "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID"
             }
         ));
-        jScrollPane1.setViewportView(tblViewPatients);
+        jScrollPane1.setViewportView(tblPatients);
 
         btnEditVital.setText("Edit Vitals");
         btnEditVital.addActionListener(new java.awt.event.ActionListener() {
@@ -292,14 +293,14 @@ public class ViewPatients extends javax.swing.JFrame {
     private void btnAddVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVitalsActionPerformed
         // TODO add your handling code here:
 
-        int selectedRowIndex = tblViewPatients.getSelectedRow();
+        int selectedRowIndex = tblPatients.getSelectedRow();
 
         if(selectedRowIndex<0)
         {
             JOptionPane.showMessageDialog(this, "Select a row to add Vital Sign.");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) tblViewPatients.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
         int PatientID = selectedPatient.getPatientID();
 
@@ -316,8 +317,8 @@ public class ViewPatients extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Select a row to Edit it.");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) tblViewPatients.getModel();
-        int patientSelectedIndex = tblViewPatients.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+        int patientSelectedIndex = tblPatients.getSelectedRow();
         Patient selectedPatient = (Patient) model.getValueAt(patientSelectedIndex, 0);
 
         //EditVitals editVitals = new EditVitals(SplitPane,patientDirectory,personDirectory,selectedPatient,selectedRowIndex);
@@ -326,7 +327,7 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnViewVitalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewVitalsActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblViewPatients.getSelectedRow();
+        int selectedRowIndex = tblPatients.getSelectedRow();
 
         if(selectedRowIndex<0)
         {
@@ -334,7 +335,7 @@ public class ViewPatients extends javax.swing.JFrame {
             return;
         }
 
-        DefaultTableModel modelpat = (DefaultTableModel) tblViewPatients.getModel();
+        DefaultTableModel modelpat = (DefaultTableModel) tblPatients.getModel();
         Patient selectedPatient = (Patient) modelpat.getValueAt(selectedRowIndex, 0);
         int PatientID = selectedPatient.getPatientID();
 
@@ -363,14 +364,14 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblViewPatients.getSelectedRow();
+        int selectedRowIndex = tblPatients.getSelectedRow();
 
         if(selectedRowIndex<0)
         {
             JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) tblViewPatients.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
 
         pd.deletePatient(selectedPatient);
@@ -387,14 +388,14 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblViewPatients.getSelectedRow();
+        int selectedRowIndex = tblPatients.getSelectedRow();
 
         if(selectedRowIndex<0)
         {
             JOptionPane.showMessageDialog(this, "Select a row to Edit it.");
             return;
         }
-        DefaultTableModel model = (DefaultTableModel) tblViewPatients.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
 
        // EditPatient editPatient = new EditPatient(SplitPane,patientDirectory,personDirectory,selectedPatient.getPatientID());
@@ -404,7 +405,7 @@ public class ViewPatients extends javax.swing.JFrame {
     private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
         // TODO add your handling code here:
         String SearchString = txtSearch.getText();
-        DefaultTableModel model = (DefaultTableModel) tblViewPatients.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         model.setRowCount(0);
 
         for(Patient p: pd.getPatientDirectory())
@@ -471,13 +472,28 @@ public class ViewPatients extends javax.swing.JFrame {
     private javax.swing.JButton btnViewVitals;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblViewPatients;
+    private javax.swing.JTable tblPatients;
     private javax.swing.JTable tblVitals;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 public void populateTable()
     {
-        try {
+        pd.getDbPatientDirectory();
+         DefaultTableModel model=(DefaultTableModel) tblPatients.getModel();
+        model.setRowCount(0);
+        for(Patient p: pd.getPatientDirectory())
+        {
+             Object[] row=new Object[9];
+             row[0]=p.getName();
+             row[1]=p.getAge();
+             row[2]=p.getCity();
+             row[3]=p.getPatientID();
+             row[4]=p.getCommunity();
+            
+             row[5]=p;
+             model.addRow(row);
+        }
+       /* try {
             int i;
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
@@ -508,6 +524,6 @@ public void populateTable()
             }
         } catch (SQLException ex) {
             Logger.getLogger(ViewDoctor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
     }
 }

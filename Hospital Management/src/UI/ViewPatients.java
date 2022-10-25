@@ -32,6 +32,7 @@ public class ViewPatients extends javax.swing.JFrame {
     PatientDirectory pd;
     public ViewPatients() {
         pd=new PatientDirectory();
+        pd.getDbPatientDirectory();
         initComponents();
         
     }
@@ -480,22 +481,23 @@ public class ViewPatients extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public void populateTable()
     {
-         pd.getDbPatientDirectory();
+         
          DefaultTableModel model=(DefaultTableModel) tblPatients.getModel();
         model.setRowCount(0);
-        System.out.println("Inside populate");
-        System.out.print(pd);
+       // System.out.println("Inside populate");
+       // System.out.print(pd);
         for(Patient p: pd.getPatientDirectory())
         {
-            System.out.println("Inside loop");
+            //System.out.println("Inside loop");
              //System.out.println(p.getName());
              Object[] row=new Object[9];
-             row[0]=p.getName();
-             row[1]=p.getAge();
-             row[2]=p.getCity();
-             row[3]=p.getPatientID();
-             row[4]=p.getCommunity();
-             row[5]=p;
+             row[0]=p;
+             row[1]=p.getName();
+             row[2]=p.getAge();
+             row[3]=p.getCity();
+             row[4]=p.getPatientID();
+             row[5]=p.getCommunity();
+             
              model.addRow(row);
         }
        /* try {

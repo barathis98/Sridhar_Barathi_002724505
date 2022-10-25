@@ -15,7 +15,7 @@ public class Hospital extends Community{
     
     String Name;
     String Address;
-    private ArrayList <Hospital> list;
+    //private ArrayList <Hospital> list;
 
     public void setAddress(String Address) {
         this.Address = Address;

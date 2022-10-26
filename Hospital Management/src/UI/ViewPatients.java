@@ -60,6 +60,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnGo = new javax.swing.JButton();
         txtSearch = new javax.swing.JTextField();
+        btnVitalRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -109,19 +110,19 @@ public class ViewPatients extends javax.swing.JFrame {
 
         tblPatients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID"
+                "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID", "Object"
             }
         ));
         jScrollPane1.setViewportView(tblPatients);
@@ -168,6 +169,13 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnVitalRefresh.setText("Refresh");
+        btnVitalRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVitalRefreshActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,6 +203,8 @@ public class ViewPatients extends javax.swing.JFrame {
                         .addComponent(btnDelete))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVitalRefresh)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEditVital)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDeleteVital)))
@@ -222,7 +232,8 @@ public class ViewPatients extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteVital)
-                    .addComponent(btnEditVital))
+                    .addComponent(btnEditVital)
+                    .addComponent(btnVitalRefresh))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -304,8 +315,10 @@ public class ViewPatients extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
+        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
         int PatientID = selectedPatient.getPatientID();
+        AddVitals av=new AddVitals(PatientID,pd);
+        av.setVisible(true);
 
         //AddVitals addVitalSigns = new AddVitals(SplitPane,patientDirectory,personDirectory,PatientID);
         //SplitPane.setRightComponent(addVitalSigns);
@@ -322,7 +335,12 @@ public class ViewPatients extends javax.swing.JFrame {
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         int patientSelectedIndex = tblPatients.getSelectedRow();
-        Patient selectedPatient = (Patient) model.getValueAt(patientSelectedIndex, 0);
+        Patient selectedPatient = (Patient) model.getValueAt(patientSelectedIndex, 7);
+        int PatientID = selectedPatient.getPatientID();
+        //AddVitals av=new AddVitals(PatientID,pd);
+        //av.setVisible(true);
+        EditVitals ev=new EditVitals(PatientID,pd,selectedPatient,selectedRowIndex);
+        ev.setVisible(true);
 
         //EditVitals editVitals = new EditVitals(SplitPane,patientDirectory,personDirectory,selectedPatient,selectedRowIndex);
         //SplitPane.setRightComponent(editVitals);
@@ -339,7 +357,7 @@ public class ViewPatients extends javax.swing.JFrame {
         }
 
         DefaultTableModel modelpat = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) modelpat.getValueAt(selectedRowIndex, 0);
+        Patient selectedPatient = (Patient) modelpat.getValueAt(selectedRowIndex, 7);
         int PatientID = selectedPatient.getPatientID();
 
         DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
@@ -350,8 +368,11 @@ public class ViewPatients extends javax.swing.JFrame {
             if(p.getPatientID()==PatientID)
             {
                 Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
                 for(Encounter e: p.getEH().getEncounterHistory())
                 {
+                    System.out.print(e.getPulse());
                     row[0]=p;
                     row[1]=p.getPatientID();
                     row[2]=e.getPulse();
@@ -375,7 +396,7 @@ public class ViewPatients extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
+        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
 
         pd.deletePatient(selectedPatient);
 
@@ -399,7 +420,7 @@ public class ViewPatients extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 0);
+        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
 
        // EditPatient editPatient = new EditPatient(SplitPane,patientDirectory,personDirectory,selectedPatient.getPatientID());
       //  SplitPane.setRightComponent(editPatient);
@@ -431,6 +452,11 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnGoActionPerformed
+
+    private void btnVitalRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVitalRefreshActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnVitalRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -473,6 +499,7 @@ public class ViewPatients extends javax.swing.JFrame {
     private javax.swing.JButton btnGo;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewVitals;
+    private javax.swing.JButton btnVitalRefresh;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblPatients;
@@ -491,12 +518,16 @@ public void populateTable()
             //System.out.println("Inside loop");
              //System.out.println(p.getName());
              Object[] row=new Object[9];
-             row[0]=p;
-             row[1]=p.getName();
-             row[2]=p.getAge();
-             row[3]=p.getCity();
-             row[4]=p.getPatientID();
+             row[7]=p;
+             row[0]=p.getName();
+             row[1]=p.getAge();
+             row[2]=p.getGender();
+             row[3]=p.getResidence();
+             System.out.println(p.getResidence());
+             row[4]=p.getCity();
              row[5]=p.getCommunity();
+             row[6]=p.getPatientID();
+             
              
              model.addRow(row);
         }

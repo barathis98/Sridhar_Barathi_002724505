@@ -59,6 +59,10 @@ public class PatientDirectory {
                  p.setCity(st.getString("City"));
                  p.setAge(st.getInt("Age"));
                  p.setPatientID(st.getInt("Patient Id"));
+                 p.setGender(st.getString("Gender"));
+                 p.setCommunity(st.getString("Community"));
+                 p.setResidence(st.getString("Residence"));
+                
                  patientDirectory.add(p);
            
              }

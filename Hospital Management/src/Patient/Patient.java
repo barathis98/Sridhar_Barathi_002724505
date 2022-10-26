@@ -15,9 +15,16 @@ public class Patient extends Person{
     
     private int PatientID;
     EncounterHistory EH = new EncounterHistory();
+   // EncounterHistory EH = new EncounterHistory();
     private boolean abnormal;
     private boolean abnormalBloodPressure;
     private boolean abnormalTemperature;
+    
+   /* public void Patient()
+    {
+        
+        EH.getDbEncounterHistory(PatientID);
+    }*/
 
     public void setPatientID(int PatientID) {
         this.PatientID = PatientID;
@@ -71,5 +78,12 @@ public class Patient extends Person{
     public boolean isAbnormalPulse() {
         return abnormalPulse;
     }
+    
+   /* public EncounterHistory getDbEncounter(int PatientID)
+    {
+        EH.getDbEncounterHistory(PatientID);
+        return EH;
+    }*/
     private boolean abnormalPulse;
+    
 }

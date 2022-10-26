@@ -421,6 +421,9 @@ public class ViewPatients extends javax.swing.JFrame {
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
         Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
+        int PatientId=selectedPatient.getPatientID();
+        EditPatient ep=new EditPatient(pd,selectedPatient,PatientId);
+        ep.setVisible(true);
 
        // EditPatient editPatient = new EditPatient(SplitPane,patientDirectory,personDirectory,selectedPatient.getPatientID());
       //  SplitPane.setRightComponent(editPatient);

@@ -18,14 +18,14 @@ import javax.swing.SwingUtilities;
  *
  * @author BARATHI
  */
-public class LoginPanelPatient extends javax.swing.JPanel {
+public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
 
     /**
      * Creates new form LoginPanel
      */
     DoctorDirectory dd;
     String loggedPatient;
-    public LoginPanelPatient() {
+    public LoginPanelCommunityAdmin() {
         initComponents();
         dd=new DoctorDirectory();
         
@@ -121,7 +121,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             Statement stmt=con.createStatement();
             Statement stmt1=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from Patient where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password from CommunityAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
@@ -156,7 +156,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             stmt.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(LoginPanelPatient.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginPanelCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed

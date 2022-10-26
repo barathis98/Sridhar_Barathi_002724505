@@ -28,8 +28,10 @@ public class ViewDoctor extends javax.swing.JFrame {
      */
     DoctorDirectory dd;
     ArrayList<Doctor > dlist;
-    public ViewDoctor() {
+    String loggedPatient;
+    public ViewDoctor(String loggedPatient) {
         initComponents();
+        this.loggedPatient=loggedPatient;
         dd=new DoctorDirectory();
     }
 
@@ -108,9 +110,21 @@ public class ViewDoctor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex=tblDoctor.getSelectedRow();
+        String selectedDoctor;
         if (selectedRowIndex<0)
         {
-            JOptionPane.showMessageDialog(this,"Select a Doctor to book appointment");
+            try {
+                 DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
+                 //int selectedRowIndex = tblDoctor.getSelectedRow();
+                JOptionPane.showMessageDialog(this,"Select a Doctor to book appointment");
+                Connection con=SQLConnection.dbconnector();
+                Statement stmt=con.createStatement();
+                selectedDoctor=(String) model.getValueAt(selectedRowIndex, 0);
+                String insertQuery="update Patient set Doctor='"+selectedDoctor+"'where Name='"+loggedPatient+"';";
+                stmt.executeQuery(insertQuery);
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewDoctor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         else
         {
@@ -149,11 +163,7 @@ public class ViewDoctor extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewDoctor().setVisible(true);
-            }
-        });
+        
     }
     
     public void PopulateTable()

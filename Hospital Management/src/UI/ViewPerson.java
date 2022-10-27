@@ -23,6 +23,7 @@ public class ViewPerson extends javax.swing.JFrame {
      PatientDirectory pd;
     public ViewPerson(String community) {
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         pd=new PatientDirectory();
         pd.getDbCommunityPatientDirectory(community);
         this.community=community;
@@ -31,6 +32,7 @@ public class ViewPerson extends javax.swing.JFrame {
     }
     public ViewPerson() {
      initComponents();
+     setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         pd=new PatientDirectory();
         pd.getDbPatientDirectory();
         this.community=community;

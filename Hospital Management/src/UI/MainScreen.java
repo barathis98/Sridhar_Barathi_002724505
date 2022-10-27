@@ -227,6 +227,10 @@ public class MainScreen extends javax.swing.JFrame {
         btnCommunityAdmin.setVisible(false);
         btnHospitalAdmin.setVisible(false);
         btnAdmin.setVisible(true);
+        //SystemAdminHospital ah=new SystemAdminHospital();
+        //ah.setVisible(true);
+        LoginPanelHospitalAdmin ha=new LoginPanelHospitalAdmin();
+       jSplitPane1.setRightComponent(ha);
     }//GEN-LAST:event_btnHospitalAdminActionPerformed
 
     /**

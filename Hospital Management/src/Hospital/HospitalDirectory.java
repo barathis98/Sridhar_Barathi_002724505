@@ -5,7 +5,15 @@
 package Hospital;
 
 import Doctor.Doctor;
+import Doctor.DoctorDirectory;
+import SQLConnection.SQLConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,6 +43,28 @@ public class HospitalDirectory {
     public void deleteHospital(Hospital h)
     {
         HospitalDirectory.remove(h);
+    }
+    public void getDbHospitalDirectory()
+    {
+        try {
+            Connection con=SQLConnection.dbconnector();
+            String sql="select * from Hospital";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet st=ps.executeQuery();
+            
+             while(st.next())
+             {
+                 Hospital h=new Hospital();
+                 h.setName(st.getString("HospitalName"));
+                  h.setAddress(st.getString("Address"));
+                  h.setCity(st.getString("City"));
+                  h.setCommunity(st.getString("Community"));
+                  HospitalDirectory.add(h);
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //return list;
     }
 
     

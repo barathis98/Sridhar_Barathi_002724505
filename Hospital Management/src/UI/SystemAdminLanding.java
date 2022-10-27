@@ -40,6 +40,11 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         });
 
         btnDoctor.setText("Manage Doctors");
+        btnDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDoctorActionPerformed(evt);
+            }
+        });
 
         btnHospital.setText("Manage Hospitals");
 
@@ -76,6 +81,12 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         ViewPerson vp = new ViewPerson();
         vp.setVisible(true);
     }//GEN-LAST:event_btnPatientActionPerformed
+
+    private void btnDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoctorActionPerformed
+        // TODO add your handling code here:
+        SystemAdminDoctor sa= new SystemAdminDoctor();
+        sa.setVisible(true);
+    }//GEN-LAST:event_btnDoctorActionPerformed
 
     /**
      * @param args the command line arguments

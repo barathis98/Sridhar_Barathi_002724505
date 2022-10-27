@@ -120,25 +120,26 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
             Statement stmt1=con.createStatement();
+            String community = null;
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from CommunityAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password,Community from CommunityAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
             
             if (rst.next())
             {
-                while(rst.next())
-                {
-                    loggedPatient=rst.getString("Name");
+                
+                    community=rst.getString("Community");
+                    //System.out.print(community);
                     //String insertQuery="update Patient set Doctor='"+loggedPatient+"'where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
                     //stmt1.executeQuery(insertQuery);
                     
                     
-                }
+                
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
-                ViewDoctor vd=new ViewDoctor(loggedPatient);
-                vd.setVisible(true);
+                ViewPerson vp=new ViewPerson(community);
+                vp.setVisible(true);
                 MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 topFrame.dispose();
                 topFrame.setVisible(false);

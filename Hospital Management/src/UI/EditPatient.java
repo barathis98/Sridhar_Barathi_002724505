@@ -22,6 +22,7 @@ public class EditPatient extends javax.swing.JFrame {
     Patient selectedPatient;
     public EditPatient(PatientDirectory pd, Patient selectedRow,int PatientId) {
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         this.pd=pd;
         this.selectedPatient=selectedRow;
         this.PatientId=PatientId;

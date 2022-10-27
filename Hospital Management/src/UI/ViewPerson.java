@@ -29,6 +29,14 @@ public class ViewPerson extends javax.swing.JFrame {
         System.out.print(community);
         populateTable();
     }
+    public ViewPerson() {
+     initComponents();
+        pd=new PatientDirectory();
+        pd.getDbPatientDirectory();
+        this.community=community;
+        System.out.print(community);
+        populateTable();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -45,6 +45,7 @@ public class ViewPerson extends javax.swing.JFrame {
         btnEdit1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtAddNewPatient = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -100,6 +101,13 @@ public class ViewPerson extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setText("Delete Patient");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,8 +118,10 @@ public class ViewPerson extends javax.swing.JFrame {
                 .addComponent(txtAddNewPatient)
                 .addGap(35, 35, 35)
                 .addComponent(jButton1)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEdit1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -128,7 +138,8 @@ public class ViewPerson extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit1)
                     .addComponent(jButton1)
-                    .addComponent(txtAddNewPatient))
+                    .addComponent(txtAddNewPatient)
+                    .addComponent(btnDelete))
                 .addContainerGap(135, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -196,6 +207,24 @@ public class ViewPerson extends javax.swing.JFrame {
         //topFrame.setVisible(false);
     }//GEN-LAST:event_txtAddNewPatientActionPerformed
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+         int selectedRowIndex = tblPatients.getSelectedRow();
+
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
+            return;
+        }
+        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
+
+        pd.deletePatient(selectedPatient);
+
+        JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
+        populateTable();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -228,6 +257,7 @@ public class ViewPerson extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEdit1;
     private javax.swing.JButton jButton1;

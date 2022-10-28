@@ -30,11 +30,18 @@ public class ViewPatients extends javax.swing.JFrame {
      * Creates new form ViewPatients
      */
     PatientDirectory pd;
-    public ViewPatients() {
+    //String Doctor;
+    public ViewPatients(String loggedDoctor) {
         pd=new PatientDirectory();
-        pd.getDbPatientDirectory();
+        //pd.getDbPatientDirectory();
+        pd.getDbDoctorPatientDirectory(loggedDoctor);
         initComponents();
         
+    }
+    public ViewPatients()
+    {
+        pd=new PatientDirectory();
+        pd.getDbPatientDirectory();
     }
 
     /**

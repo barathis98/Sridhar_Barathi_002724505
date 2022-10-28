@@ -14,6 +14,15 @@ public class Person extends Residence {
     protected String Name;
     protected int age;
     protected String Gender;
+    protected int phNo; 
+
+    public void setPhNo(int phNo) {
+        this.phNo = phNo;
+    }
+
+    public int getPhNo() {
+        return phNo;
+    }
 
     public void setName(String Name) {
         this.Name = Name;

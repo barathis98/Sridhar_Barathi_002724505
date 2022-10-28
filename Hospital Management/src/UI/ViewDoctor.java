@@ -28,11 +28,12 @@ public class ViewDoctor extends javax.swing.JFrame {
      */
     DoctorDirectory dd;
     ArrayList<Doctor > dlist;
-    String loggedPatient;
-    public ViewDoctor(String loggedPatient) {
+    int loggedPatient;
+    public ViewDoctor(int loggedPatient) {
         initComponents();
         this.loggedPatient=loggedPatient;
         dd=new DoctorDirectory();
+        
     }
 
     /**
@@ -110,24 +111,28 @@ public class ViewDoctor extends javax.swing.JFrame {
         // TODO add your handling code here:
         int selectedRowIndex=tblDoctor.getSelectedRow();
         String selectedDoctor;
+        DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
         if (selectedRowIndex<0)
         {
-            try {
-                 DefaultTableModel model=(DefaultTableModel) tblDoctor.getModel();
-                 //int selectedRowIndex = tblDoctor.getSelectedRow();
-                JOptionPane.showMessageDialog(this,"Select a Doctor to book appointment");
-                Connection con=SQLConnection.dbconnector();
-                Statement stmt=con.createStatement();
-                selectedDoctor=(String) model.getValueAt(selectedRowIndex, 0);
-                String insertQuery="update Patient set Doctor='"+selectedDoctor+"'where Name='"+loggedPatient+"';";
-                stmt.executeQuery(insertQuery);
-            } catch (SQLException ex) {
-                Logger.getLogger(ViewDoctor.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            //int selectedRowIndex = tblDoctor.getSelectedRow();
+            JOptionPane.showMessageDialog(this,"Select a Doctor to book appointment");
         }
         else
         {
-            JOptionPane.showMessageDialog(this,"Appointment booked successfully");
+            try {
+                
+                Connection con=SQLConnection.dbconnector();
+                Statement stmt=con.createStatement();
+                selectedDoctor=(String) model.getValueAt(selectedRowIndex, 0);
+                System.out.println(selectedDoctor);
+                System.out.print(loggedPatient);
+                JOptionPane.showMessageDialog(this,"Appointment booked successfully with Dr."+selectedDoctor);
+                String insertQuery="update Patient set Doctor='"+selectedDoctor+"'where PatientId="+loggedPatient+";";
+                stmt.executeUpdate(insertQuery);
+                stmt.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewDoctor.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -98,12 +98,13 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+       String loggedDoctor;
         try {
             // TODO add your handling code here:
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password,Name from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
@@ -111,7 +112,8 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             if (rst.next())
             {
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
-                ViewPatients vp=new ViewPatients();
+                loggedDoctor=rst.getString("Name");
+                ViewPatients vp=new ViewPatients(loggedDoctor);
                 vp.setVisible(true);
                 MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 topFrame.dispose();

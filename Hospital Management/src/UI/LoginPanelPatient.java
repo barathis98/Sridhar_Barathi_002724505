@@ -24,7 +24,7 @@ public class LoginPanelPatient extends javax.swing.JPanel {
      * Creates new form LoginPanel
      */
     DoctorDirectory dd;
-    String loggedPatient;
+    int loggedPatient;
     public LoginPanelPatient() {
         initComponents();
         dd=new DoctorDirectory();
@@ -131,21 +131,21 @@ public class LoginPanelPatient extends javax.swing.JPanel {
             Statement stmt=con.createStatement();
             Statement stmt1=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from Patient where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password,PatientID from Patient where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
             
             if (rst.next())
             {
-                while(rst.next())
-                {
-                    loggedPatient=rst.getString("Name");
+                
+                    loggedPatient=rst.getInt("PatientID");
                     //String insertQuery="update Patient set Doctor='"+loggedPatient+"'where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
                     //stmt1.executeQuery(insertQuery);
                     
                     
-                }
+                
+                System.out.println(loggedPatient);
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
                 ViewDoctor vd=new ViewDoctor(loggedPatient);
                 vd.setVisible(true);

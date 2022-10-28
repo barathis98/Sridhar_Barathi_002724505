@@ -58,7 +58,7 @@ public class PatientDirectory {
                  
                  p.setCity(st.getString("City"));
                  p.setAge(st.getInt("Age"));
-                 p.setPatientID(st.getInt("Patient Id"));
+                 p.setPatientID(st.getInt("PatientId"));
                  p.setGender(st.getString("Gender"));
                  p.setCommunity(st.getString("Community"));
                  p.setResidence(st.getString("Residence"));
@@ -89,7 +89,7 @@ public class PatientDirectory {
                  
                  p.setCity(st.getString("City"));
                  p.setAge(st.getInt("Age"));
-                 p.setPatientID(st.getInt("Patient Id"));
+                 p.setPatientID(st.getInt("PatientId"));
                  p.setGender(st.getString("Gender"));
                  p.setCommunity(st.getString("Community"));
                  p.setResidence(st.getString("Residence"));
@@ -102,6 +102,37 @@ public class PatientDirectory {
             Logger.getLogger(DoctorDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+      public void getDbDoctorPatientDirectory(String Doctor)
+    {
+        try {
+            Connection con=SQLConnection.dbconnector();
+            String sql="select * from Patient where Doctor='"+Doctor+"';";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet st=ps.executeQuery();
+            
+             while(st.next())
+             {
+                 Patient p=new Patient();
+                 
+                 p.setName(st.getString("Name"));
+                
+                 
+                 p.setCity(st.getString("City"));
+                 p.setAge(st.getInt("Age"));
+                 p.setPatientID(st.getInt("PatientId"));
+                 p.setGender(st.getString("Gender"));
+                 p.setCommunity(st.getString("Community"));
+                 p.setResidence(st.getString("Residence"));
+                
+                 patientDirectory.add(p);
+           
+             }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     
 }

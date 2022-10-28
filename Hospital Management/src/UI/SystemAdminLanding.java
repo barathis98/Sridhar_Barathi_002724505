@@ -29,6 +29,7 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         btnPatient = new javax.swing.JButton();
         btnDoctor = new javax.swing.JButton();
         btnHospital = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,6 +54,13 @@ public class SystemAdminLanding extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Manage Community Admins");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,8 +71,12 @@ public class SystemAdminLanding extends javax.swing.JFrame {
                     .addComponent(btnPatient)
                     .addComponent(btnHospital))
                 .addGap(25, 25, 25)
-                .addComponent(btnDoctor)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnDoctor)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +86,9 @@ public class SystemAdminLanding extends javax.swing.JFrame {
                     .addComponent(btnPatient)
                     .addComponent(btnDoctor))
                 .addGap(18, 18, 18)
-                .addComponent(btnHospital)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnHospital)
+                    .addComponent(jButton1))
                 .addContainerGap(168, Short.MAX_VALUE))
         );
 
@@ -98,6 +112,12 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         SystemAdminHospital ah=new SystemAdminHospital();
         ah.setVisible(true);
     }//GEN-LAST:event_btnHospitalActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ViewCommunityAdmin ca=new ViewCommunityAdmin();
+        ca.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,5 +159,6 @@ public class SystemAdminLanding extends javax.swing.JFrame {
     private javax.swing.JButton btnDoctor;
     private javax.swing.JButton btnHospital;
     private javax.swing.JButton btnPatient;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

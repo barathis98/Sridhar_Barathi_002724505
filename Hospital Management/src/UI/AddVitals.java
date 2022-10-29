@@ -242,6 +242,7 @@ public class AddVitals extends javax.swing.JFrame {
         // TODO add your handling code here:
        // ViewPatient viewPatientDetails = new ViewPatient(SplitPane,patientDirectory,personDirectory);
         //SplitPane.setRightComponent(viewPatientDetails);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

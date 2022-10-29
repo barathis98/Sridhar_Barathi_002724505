@@ -101,6 +101,7 @@ public class ViewPatients extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblVitals);
 
+        btnDeleteVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDeleteVital.setText("Delete Vitals");
         btnDeleteVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +109,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnAddVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (2).png"))); // NOI18N
         btnAddVitals.setText("Add Vitals");
         btnAddVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,8 +134,14 @@ public class ViewPatients extends javax.swing.JFrame {
                 "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID", "Object"
             }
         ));
+        tblPatients.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPatientsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblPatients);
 
+        btnEditVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEditVital.setText("Edit Vitals");
         btnEditVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +149,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnViewVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/heart-attack (2).png"))); // NOI18N
         btnViewVitals.setText("View Vitals");
         btnViewVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +157,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDelete.setText("Delete Patient");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +172,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEdit.setText("Edit Patient");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +187,7 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnVitalRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnVitalRefresh.setText("Refresh");
         btnVitalRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,7 +212,7 @@ public class ViewPatients extends javax.swing.JFrame {
                         .addComponent(btnRefresh)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(btnViewVitals)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddVitals)
@@ -236,7 +248,7 @@ public class ViewPatients extends javax.swing.JFrame {
                             .addComponent(btnEdit)
                             .addComponent(btnAddVitals)
                             .addComponent(btnViewVitals))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteVital)
                     .addComponent(btnEditVital)
@@ -395,6 +407,9 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this patient?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         int selectedRowIndex = tblPatients.getSelectedRow();
 
         if(selectedRowIndex<0)
@@ -409,6 +424,7 @@ public class ViewPatients extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
         populateTable();
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -467,6 +483,48 @@ public class ViewPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_btnVitalRefreshActionPerformed
+
+    private void tblPatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsMouseClicked
+        // TODO add your handling code here:
+         int selectedRowIndex = tblPatients.getSelectedRow();
+
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to view Vital Signs.");
+            return;
+        }
+
+        DefaultTableModel modelpat = (DefaultTableModel) tblPatients.getModel();
+        Patient selectedPatient = (Patient) modelpat.getValueAt(selectedRowIndex, 7);
+        int PatientID = selectedPatient.getPatientID();
+
+        DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
+        model.setRowCount(0);
+
+        for(Patient p: pd.getPatientDirectory())
+        {
+            if(p.getPatientID()==PatientID)
+            {
+                Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
+                for(Encounter e: p.getEH().getEncounterHistory())
+                {
+                    System.out.print(e.getPulse());
+                    row[0]=p;
+                    row[1]=p.getPatientID();
+                    row[2]=e.getPulse();
+                    row[3]=e.getBloodPressure();
+                    row[4]=e.getTemperature();
+                    row[5]=e.getUpdateTime();
+
+                    model.addRow(row);
+                }
+            }
+           
+        }
+        
+    }//GEN-LAST:event_tblPatientsMouseClicked
 
     /**
      * @param args the command line arguments

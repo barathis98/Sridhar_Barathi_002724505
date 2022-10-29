@@ -39,7 +39,7 @@
                       <Component id="btnRefresh" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="120" max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                       <Component id="btnViewVitals" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnAddVitals" min="-2" max="-2" attributes="0"/>
@@ -85,7 +85,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="184" max="32767" attributes="0"/>
+              <EmptySpace pref="170" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDeleteVital" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEditVital" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -169,6 +169,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnDeleteVital">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/delete (2).png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete Vitals"/>
       </Properties>
       <Events>
@@ -177,6 +180,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddVitals">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/add (2).png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add Vitals"/>
       </Properties>
       <Events>
@@ -252,11 +258,17 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientsMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="btnEditVital">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/edit.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edit Vitals"/>
       </Properties>
       <Events>
@@ -265,6 +277,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnViewVitals">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/heart-attack (2).png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="View Vitals"/>
       </Properties>
       <Events>
@@ -273,6 +288,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnDelete">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/delete (2).png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete Patient"/>
       </Properties>
       <Events>
@@ -289,6 +307,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEdit">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/edit.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Edit Patient"/>
       </Properties>
       <Events>
@@ -307,6 +328,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnVitalRefresh">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Icon/refresh.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Refresh"/>
       </Properties>
       <Events>

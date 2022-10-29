@@ -36,6 +36,7 @@ public class ViewPatients extends javax.swing.JFrame {
         //pd.getDbPatientDirectory();
         pd.getDbDoctorPatientDirectory(loggedDoctor);
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         
     }
     public ViewPatients()
@@ -431,6 +432,7 @@ public class ViewPatients extends javax.swing.JFrame {
         // TODO add your handling code here:
        // PatientDetails addPatientDetails = new PatientDetails(SplitPane,patientDirectory,personDirectory,-1);
         //SplitPane.setRightComponent(addPatientDetails);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed

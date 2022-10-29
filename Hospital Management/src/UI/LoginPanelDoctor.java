@@ -114,9 +114,9 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
                 loggedDoctor=rst.getString("Name");
                 ViewPatients vp=new ViewPatients(loggedDoctor);
                 vp.setVisible(true);
-                MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
-                topFrame.dispose();
-                topFrame.setVisible(false);
+               // MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
+               // topFrame.dispose();
+                //topFrame.setVisible(false);
                 
                 
                 

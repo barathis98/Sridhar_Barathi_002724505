@@ -15,6 +15,7 @@ public class SystemAdminLanding extends javax.swing.JFrame {
      */
     public SystemAdminLanding() {
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
     /**

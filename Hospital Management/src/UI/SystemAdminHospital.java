@@ -37,9 +37,9 @@ public class SystemAdminHospital extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHospital = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        txtAdd = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        txtDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,19 +61,24 @@ public class SystemAdminHospital extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblHospital);
 
-        jButton1.setText("Add Hospital");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        txtAdd.setText("Add Hospital");
+        txtAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                txtAddActionPerformed(evt);
             }
         });
 
         jButton2.setText("Edit Hospital");
-
-        jButton3.setText("Delete Hospital");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        txtDelete.setText("Delete Hospital");
+        txtDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDeleteActionPerformed(evt);
             }
         });
 
@@ -88,11 +93,11 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(176, 176, 176)
-                        .addComponent(jButton1)
+                        .addComponent(txtAdd)
                         .addGap(31, 31, 31)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
+                        .addComponent(txtDelete)))
                 .addContainerGap(174, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -102,9 +107,9 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(txtAdd)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(txtDelete))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
@@ -116,11 +121,16 @@ public class SystemAdminHospital extends javax.swing.JFrame {
         PopulateTable();
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        int selectedRowIndex = tblHospital.getSelectedRow();
+         DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
+        AddHospital ah=new AddHospital(hd,selectedHospital);
+        ah.setVisible(true);
+    }//GEN-LAST:event_txtAddActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void txtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteActionPerformed
         // TODO add your handling code here:
          int selectedRowIndex = tblHospital.getSelectedRow();
 
@@ -136,7 +146,17 @@ public class SystemAdminHospital extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Selected Doctor was deleted.");
         PopulateTable();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_txtDeleteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int selectedRowIndex = tblHospital.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
+        EditHospital eh=new EditHospital(selectedHospital);
+        eh.setVisible(true);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,11 +195,11 @@ public class SystemAdminHospital extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHospital;
+    private javax.swing.JButton txtAdd;
+    private javax.swing.JButton txtDelete;
     // End of variables declaration//GEN-END:variables
  public void PopulateTable()
     {
@@ -194,6 +214,7 @@ public class SystemAdminHospital extends javax.swing.JFrame {
              row[1]=h.getAddress();
              row[2]=h.getCity();
              row[3]=h.getCommunity();
+             row[4]=h;
              model.addRow(row);
         }
 }

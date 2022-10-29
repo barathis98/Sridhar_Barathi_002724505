@@ -32,6 +32,7 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
             String sql="select * from CommunityAdmin";
             PreparedStatement ps=con.prepareStatement(sql);
             st=ps.executeQuery();
+            setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         } catch (SQLException ex) {
             Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }

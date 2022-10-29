@@ -17,6 +17,7 @@ public class HospitalAdminLanding extends javax.swing.JFrame {
     public HospitalAdminLanding(String selectedHospital) {
         initComponents();
         this.selectedHospital=selectedHospital;
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
     /**

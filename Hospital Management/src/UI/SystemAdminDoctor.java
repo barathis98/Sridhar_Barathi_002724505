@@ -62,13 +62,13 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Doctor Name", "Title 2", "Title 3", "Hospital Name"
+                "Doctor Name", "Phone Number", "Specialization", "City", "Hospital Name", "Object"
             }
         ));
         jScrollPane1.setViewportView(tblDoctor);
@@ -158,6 +158,11 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblDoctor.getSelectedRow();
+        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
+        Doctor selectedDoctor = (Doctor) model.getValueAt(selectedRowIndex, 5);
+        EditDoctor ed=new EditDoctor(dd,selectedDoctor);
+        ed.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

@@ -24,6 +24,7 @@ public class Registration extends javax.swing.JFrame {
         this.s=s;
         
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
     /**

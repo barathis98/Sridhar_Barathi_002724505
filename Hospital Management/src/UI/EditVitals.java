@@ -264,6 +264,7 @@ public class EditVitals extends javax.swing.JFrame {
         // TODO add your handling code here:
         //ViewPatient viewPatientDetails = new ViewPatient(SplitPane,patientDirectory,personDirectory);
         //SplitPane.setRightComponent(viewPatientDetails);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     /**

@@ -21,6 +21,7 @@ public class MainScreen extends javax.swing.JFrame {
         btnCommunityAdmin.setVisible(false);
         btnHospitalAdmin.setVisible(false);
         lblAdmin.setVisible(false);
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         
         
     }
@@ -267,6 +268,7 @@ public class MainScreen extends javax.swing.JFrame {
         btnAdmin.setVisible(true);
         LoginPanelSystemAdmin ls=new LoginPanelSystemAdmin();
         jSplitPane1.setRightComponent(ls);
+        lblAdmin.setVisible(false);
     }//GEN-LAST:event_btnSystemAdminActionPerformed
 
     private void btnCommunityAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunityAdminActionPerformed
@@ -277,6 +279,7 @@ public class MainScreen extends javax.swing.JFrame {
         btnAdmin.setVisible(true);
         LoginPanelCommunityAdmin ca= new LoginPanelCommunityAdmin();
         jSplitPane1.setRightComponent(ca);
+        lblAdmin.setVisible(false);
     }//GEN-LAST:event_btnCommunityAdminActionPerformed
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
@@ -298,6 +301,7 @@ public class MainScreen extends javax.swing.JFrame {
         //ah.setVisible(true);
         LoginPanelHospitalAdmin ha=new LoginPanelHospitalAdmin();
        jSplitPane1.setRightComponent(ha);
+       lblAdmin.setVisible(false);
     }//GEN-LAST:event_btnHospitalAdminActionPerformed
 
     /**

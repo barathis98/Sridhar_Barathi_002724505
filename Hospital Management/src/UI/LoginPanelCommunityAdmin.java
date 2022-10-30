@@ -41,18 +41,27 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         txtUname = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(805, 557));
 
+        txtUname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("UserName");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login (1).png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,32 +69,34 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Community Admin Login");
+
+        txtPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLogin))
-                    .addComponent(jLabel3))
+                .addContainerGap(249, Short.MAX_VALUE)
+                .addComponent(jLabel3)
                 .addGap(339, 339, 339))
             .addGroup(layout.createSequentialGroup()
-                .addGap(304, 304, 304)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUname)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(313, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(304, 304, 304)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(txtPass)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(352, 352, 352)
+                        .addComponent(btnLogin)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,11 +109,11 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addComponent(btnLogin)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -132,6 +143,9 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
                 ViewPerson vp=new ViewPerson(community);
                 vp.setVisible(true);
+                txtUname.setText("");
+                txtPass.setText("");
+                
                 MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 topFrame.dispose();
                 topFrame.setVisible(false);
@@ -143,6 +157,8 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
             else
             {
                 JOptionPane.showMessageDialog(this, "Login Failed", query, HEIGHT);
+                txtUname.setText("");
+                txtPass.setText("");
 
             }
             //con.close();
@@ -160,7 +176,7 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
 }

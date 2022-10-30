@@ -41,16 +41,26 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
     private void initComponents() {
 
         txtUname = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        txtPass = new javax.swing.JPasswordField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        txtUname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("UserName");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login (1).png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,7 +68,10 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Hospital Admin");
+
+        txtPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,14 +88,14 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
                                     .addComponent(jLabel2))
                                 .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtUname)
-                                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                    .addComponent(txtPass))
                                 .addGap(18, 18, 18))
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(399, 399, 399)
                         .addComponent(btnLogin)))
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(332, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,11 +108,11 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnLogin)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -139,6 +152,8 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
             else
             {
                 JOptionPane.showMessageDialog(this, "Login Failed", query, HEIGHT);
+                txtUname.setText("");
+                txtPass.setText("");
 
             }
             //con.close();
@@ -156,7 +171,7 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
 }

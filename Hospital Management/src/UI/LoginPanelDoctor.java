@@ -38,18 +38,32 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
     private void initComponents() {
 
         txtUname = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
 
+        setBackground(new java.awt.Color(153, 255, 255));
         setPreferredSize(new java.awt.Dimension(805, 557));
 
+        txtUname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtUname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUnameActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("UserName");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Password");
 
+        btnLogin.setBackground(new java.awt.Color(102, 102, 102));
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
+        btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/login (1).png"))); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,42 +71,51 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Doctor Login");
+
+        txtPassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(298, 298, 298)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogin)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtUname)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(389, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(txtPassword)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(344, 344, 344)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(356, 356, 356)
+                        .addComponent(btnLogin)))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel4)
-                .addGap(36, 36, 36)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(28, 28, 28)
+                    .addComponent(jLabel2)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnLogin)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,7 +126,7 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password,Name from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select Username,Password,Name from Doctor where Username='"+txtUname.getText()+"'and Password='"+txtPassword.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
@@ -117,6 +140,8 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
                // MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                // topFrame.dispose();
                 //topFrame.setVisible(false);
+                txtUname.setText("");
+                txtPassword.setText("");
                 
                 
                 
@@ -125,6 +150,8 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
             else
             {
                 JOptionPane.showMessageDialog(this, "Login Failed", query, HEIGHT);
+                txtUname.setText("");
+                txtPassword.setText("");
 
             }
             //con.close();
@@ -136,13 +163,17 @@ public class LoginPanelDoctor extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void txtUnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUnameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUname;
     // End of variables declaration//GEN-END:variables
 }

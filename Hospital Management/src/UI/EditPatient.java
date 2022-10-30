@@ -62,9 +62,11 @@ public class EditPatient extends javax.swing.JFrame {
             }
         });
 
+        lblCommunity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCommunity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCommunity.setText("Community:");
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Patient ID:");
 
@@ -72,17 +74,24 @@ public class EditPatient extends javax.swing.JFrame {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Edit Patient Details");
 
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblName.setText("Name:");
 
+        lblAge.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblAge.setText("Age:");
 
+        lblGender.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblGender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGender.setText("Gender:");
 
+        lblResidence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblResidence.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblResidence.setText("Residence:");
 
+        btnEdit.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,9 +99,13 @@ public class EditPatient extends javax.swing.JFrame {
             }
         });
 
+        lblCity.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblCity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCity.setText("City:");
 
+        btnBack.setBackground(new java.awt.Color(102, 102, 102));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +280,7 @@ public class EditPatient extends javax.swing.JFrame {
         // TODO add your handling code here:
         //ViewPatient viewPatientDetails = new ViewPatient(SplitPane,patientDirectory,personDirectory);
         //SplitPane.setRightComponent(viewPatientDetails);
+        dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

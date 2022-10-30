@@ -77,6 +77,8 @@ public class EditVitals extends javax.swing.JFrame {
         txtPatientID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Edit Vitals");
+        setBackground(new java.awt.Color(102, 102, 102));
 
         txtTemperature.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,33 +90,50 @@ public class EditVitals extends javax.swing.JFrame {
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Edit Vitals");
 
+        btnEdit.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("Edit");
+        btnEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
+        lblName.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblName.setText("Name:");
 
+        btnBack.setBackground(new java.awt.Color(102, 102, 102));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText("Back");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        txtName.setEditable(false);
+
+        lblPatientID.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPatientID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPatientID.setText("Patient ID:");
 
+        lblHeartRate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblHeartRate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblHeartRate.setText("Pulse:");
 
+        lblRespiratory.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblRespiratory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblRespiratory.setText("Blood Pressure:");
 
+        lblTemperature.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTemperature.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTemperature.setText("Temperature:");
+
+        txtPatientID.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -128,7 +147,7 @@ public class EditVitals extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblTemperature, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblRespiratory, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
+                    .addComponent(lblRespiratory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblName, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblPatientID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblHeartRate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -143,7 +162,7 @@ public class EditVitals extends javax.swing.JFrame {
                     .addComponent(txtPulse)
                     .addComponent(txtBloodPressure)
                     .addComponent(txtTemperature))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,7 +193,7 @@ public class EditVitals extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
                     .addComponent(btnBack))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();

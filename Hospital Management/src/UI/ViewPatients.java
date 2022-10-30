@@ -72,6 +72,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnVitalRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Patients");
+        setBackground(new java.awt.Color(153, 255, 255));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -81,6 +83,10 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnRefresh.setBackground(new java.awt.Color(102, 102, 102));
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnRefresh.setText("Refresh");
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +112,9 @@ public class ViewPatients extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblVitals);
 
+        btnDeleteVital.setBackground(new java.awt.Color(102, 102, 102));
+        btnDeleteVital.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteVital.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDeleteVital.setText("Delete Vitals");
         btnDeleteVital.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +123,9 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnAddVitals.setBackground(new java.awt.Color(102, 102, 102));
+        btnAddVitals.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnAddVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (2).png"))); // NOI18N
         btnAddVitals.setText("Add Vitals");
         btnAddVitals.addActionListener(new java.awt.event.ActionListener() {
@@ -146,6 +158,9 @@ public class ViewPatients extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblPatients);
 
+        btnEditVital.setBackground(new java.awt.Color(102, 102, 102));
+        btnEditVital.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEditVital.setForeground(new java.awt.Color(255, 255, 255));
         btnEditVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEditVital.setText("Edit Vitals");
         btnEditVital.addActionListener(new java.awt.event.ActionListener() {
@@ -154,6 +169,9 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnViewVitals.setBackground(new java.awt.Color(102, 102, 102));
+        btnViewVitals.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnViewVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnViewVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/heart-attack (2).png"))); // NOI18N
         btnViewVitals.setText("View Vitals");
         btnViewVitals.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +180,9 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(102, 102, 102));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDelete.setText("Delete Patient");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +191,10 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(102, 102, 102));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(255, 255, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/back.png"))); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +202,9 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEdit.setText("Edit Patient");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +213,10 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnGo.setBackground(new java.awt.Color(102, 102, 102));
+        btnGo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnGo.setForeground(new java.awt.Color(255, 255, 255));
+        btnGo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/previous.png"))); // NOI18N
         btnGo.setText("Go");
         btnGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +224,9 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
+        btnVitalRefresh.setBackground(new java.awt.Color(102, 102, 102));
+        btnVitalRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVitalRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnVitalRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnVitalRefresh.setText("Refresh");
         btnVitalRefresh.addActionListener(new java.awt.event.ActionListener() {
@@ -212,16 +247,16 @@ public class ViewPatients extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnViewVitals)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAddVitals)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addComponent(btnEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDelete))
@@ -240,20 +275,23 @@ public class ViewPatients extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGo)
-                            .addComponent(btnRefresh)
-                            .addComponent(btnBack)))
-                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnDelete)
                             .addComponent(btnEdit)
                             .addComponent(btnAddVitals)
-                            .addComponent(btnViewVitals))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                            .addComponent(btnViewVitals)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRefresh))
+                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteVital)
                     .addComponent(btnEditVital)
@@ -559,7 +597,7 @@ public class ViewPatients extends javax.swing.JFrame {
                         //System.out.println(selectedDoctor);
                         //System.out.print(loggedPatient);
                         //JOptionPane.showMessageDialog(this,"Appointment booked successfully with Dr."+selectedDoctor);
-                        String insertQuery="Insert into EncounterHistory (BloodPressure,Temperature,Timing,PatientId,PatientName) values ('"+e.getBloodPressure()+"','"+e.getTemperature()+"','"+e.getUpdateTime()+"','"+p.getPatientID()+"','"+p.getName()+"')";
+                        String insertQuery="Insert into EncounterHistory (BloodPressure,Temperature,Timing,PatientId,PatientName,Pulse) values ('"+e.getBloodPressure()+"','"+e.getTemperature()+"','"+e.getUpdateTime()+"','"+p.getPatientID()+"','"+p.getName()+"','"+e.getPulse()+"')";
                         stmt.executeUpdate(insertQuery); 
                         stmt.close();
                     } catch (SQLException ex) {

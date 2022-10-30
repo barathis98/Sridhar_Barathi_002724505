@@ -60,6 +60,7 @@ public class Patient extends Person{
     }
 
     public EncounterHistory getEH() {
+        //EncounterHistory EH = new EncounterHistory();
         return EH;
     }
 

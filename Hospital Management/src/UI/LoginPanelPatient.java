@@ -149,8 +149,11 @@ public class LoginPanelPatient extends javax.swing.JPanel {
                 
                 System.out.println(loggedPatient);
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
-                ViewDoctor vd=new ViewDoctor(loggedPatient);
-                vd.setVisible(true);
+                //ViewDoctor vd=new ViewDoctor(loggedPatient);
+                //vd.setVisible(true);
+                PatientLanding pl=new PatientLanding(loggedPatient);
+                pl.setVisible(true);
+                
                 //MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
                 //topFrame.dispose();
                 //topFrame.setVisible(false);

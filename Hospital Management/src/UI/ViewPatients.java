@@ -6,6 +6,7 @@ package UI;
 
 import Doctor.Doctor;
 import Encounter.Encounter;
+import Encounter.EncounterHistory;
 import Patient.Patient;
 import Patient.PatientDirectory;
 import SQLConnection.SQLConnection;
@@ -72,6 +73,9 @@ public class ViewPatients extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -382,17 +386,27 @@ public class ViewPatients extends javax.swing.JFrame {
 
         DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
         model.setRowCount(0);
+        //Patient p=new Patient();
 
         for(Patient p: pd.getPatientDirectory())
         {
+            
+            
             if(p.getPatientID()==PatientID)
             {
+                EncounterHistory eh;
+                
+                eh=p.getEH();
+                eh.EncounterHistory(PatientID);
+                eh.deleteEncounterHistory(PatientID);
+                System.out.println(p.getName());
                 Object[] row = new Object[6];
                // p.getEH().EncounterHistory(PatientID);
                 //System.out.println(p.getEH());
-                for(Encounter e: p.getEH().getEncounterHistory())
+                
+                for(Encounter e: eh.getEncounterHistory())
                 {
-                    System.out.print(e.getPulse());
+                    //System.out.print(e.getPulse());
                     row[0]=p;
                     row[1]=p.getPatientID();
                     row[2]=e.getPulse();
@@ -527,6 +541,38 @@ public class ViewPatients extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_tblPatientsMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        for(Patient p: pd.getPatientDirectory())
+        {
+
+                //Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
+                for(Encounter e: p.getEH().getEncounterHistory())
+                {
+                    try {
+                        Connection con=SQLConnection.dbconnector();
+                        Statement stmt=con.createStatement();
+                        //selectedDoctor=(String) model.getValueAt(selectedRowIndex, 0);
+                        //System.out.println(selectedDoctor);
+                        //System.out.print(loggedPatient);
+                        //JOptionPane.showMessageDialog(this,"Appointment booked successfully with Dr."+selectedDoctor);
+                        String insertQuery="Insert into EncounterHistory (BloodPressure,Temperature,Timing,PatientId,PatientName) values ('"+e.getBloodPressure()+"','"+e.getTemperature()+"','"+e.getUpdateTime()+"','"+p.getPatientID()+"','"+p.getName()+"')";
+                        stmt.executeUpdate(insertQuery); 
+                        stmt.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(ViewPatients.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                   
+                }
+            }
+           
+        
+        
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

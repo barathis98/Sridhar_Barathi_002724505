@@ -4,6 +4,12 @@
  */
 package UI;
 
+import Encounter.Encounter;
+import Encounter.EncounterHistory;
+import Patient.Patient;
+import Patient.PatientDirectory;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author BARATHI
@@ -13,8 +19,13 @@ public class ViewVitals extends javax.swing.JFrame {
     /**
      * Creates new form ViewVitals
      */
-    public ViewVitals() {
+    PatientDirectory pd = new PatientDirectory();
+    int loggedPatient;
+    public ViewVitals(int loggedPatient) {
         initComponents();
+       // this.pd=pd;
+       pd.getDbPatientDirectory();
+        this.loggedPatient=loggedPatient;
     }
 
     /**
@@ -28,8 +39,14 @@ public class ViewVitals extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         tblVitals = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         tblVitals.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -49,11 +66,21 @@ public class ViewVitals extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblVitals);
 
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(369, 369, 369)
+                .addComponent(jButton1)
+                .addContainerGap(419, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -62,7 +89,10 @@ public class ViewVitals extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(285, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(112, 112, 112))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(63, 63, 63)
@@ -72,6 +102,46 @@ public class ViewVitals extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        //populateTable();
+        DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
+        model.setRowCount(0);
+        for(Patient p: pd.getPatientDirectory())
+        {
+            if(p.getPatientID()==loggedPatient)
+            {
+         EncounterHistory eh;
+                
+                eh=p.getEH();
+                eh.EncounterHistory(loggedPatient);
+                //eh.deleteEncounterHistory(loggedPatient);
+                System.out.println(p.getName());
+                Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
+                
+                for(Encounter e: eh.getEncounterHistory())
+                {
+                    //System.out.print(e.getPulse());
+                    row[0]=p;
+                    row[1]=p.getPatientID();
+                    row[2]=e.getPulse();
+                    row[3]=e.getBloodPressure();
+                    row[4]=e.getTemperature();
+                    row[5]=e.getUpdateTime();
+
+                    model.addRow(row);
+                }
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+      //  populateTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,15 +171,39 @@ public class ViewVitals extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ViewVitals().setVisible(true);
-            }
-        });
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblVitals;
     // End of variables declaration//GEN-END:variables
+public void populateTable()
+{
+    DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
+        model.setRowCount(0);
+
+        for(Patient p: pd.getPatientDirectory())
+        {
+            if(p.getPatientID()==loggedPatient)
+            {
+                Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
+                for(Encounter e: p.getEH().getEncounterHistory())
+                {
+                    System.out.print(e.getPulse());
+                    row[0]=p;
+                    row[1]=p.getPatientID();
+                    row[2]=e.getPulse();
+                    row[3]=e.getBloodPressure();
+                    row[4]=e.getTemperature();
+                    row[5]=e.getUpdateTime();
+
+                    model.addRow(row);
+                }
+            }
+        }
+}
 }

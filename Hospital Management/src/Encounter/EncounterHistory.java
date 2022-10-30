@@ -40,26 +40,49 @@ public class EncounterHistory {
     {
         EncounterHistory.remove(E);
     }
-   /* public void EncounterHistory(int PatientId)
+    public void EncounterHistory(int PatientId)
     {
         try {
             Connection con=SQLConnection.dbconnector();
-            String sql="select * from EncounterHistory";
+            String sql="select * from EncounterHistory where PatientId='"+PatientId+"'";
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet st=ps.executeQuery(); 
+           System.out.println(st.getRow()); 
              while(st.next())
              {
-                 if (st.getInt("PatientId")==PatientId)
+                 System.out.println("Hi");
+                 if (PatientId==st.getInt("PatientId"))
                  {
                      Encounter e=new Encounter();
+                    // System.out.println(st.getInt("BloodPressure"));
                      e.setBloodPressure(st.getInt("BloodPressure"));
                      e.setPulse(st.getInt("Pulse"));
                      e.setTemperature(st.getInt("Temperature"));
-                     e.setUpdateTime("Timing");
+                     e.setUpdateTime(st.getString("Timing"));
+                     EncounterHistory.add(e);
                  }
+                 
              }
+             
+             st.close();
+             ps.close();
+             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(EncounterHistory.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }*/
+    }
+    public void deleteEncounterHistory(int PatientId)
+    {
+        try {
+            Connection con=SQLConnection.dbconnector();
+            String sql="delete from EncounterHistory where PatientId='"+PatientId+"'";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+            
+             ps.close();
+             con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EncounterHistory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

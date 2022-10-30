@@ -6,6 +6,7 @@ package UI;
 
 import Hospital.Hospital;
 import Hospital.HospitalDirectory;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,10 +19,10 @@ public class AddHospital extends javax.swing.JFrame {
      */
     HospitalDirectory hd;
     Hospital h;
-    public AddHospital(HospitalDirectory hd, Hospital h) {
+    public AddHospital(HospitalDirectory hd) {
         initComponents();
         this.hd=hd;
-        this.h=h;
+       //this.h=h;
     }
 
     /**
@@ -113,10 +114,13 @@ public class AddHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        h=hd.addHospital();
         h.setName(txtHName.getText());
         h.setCity(txtCity.getText());
         h.setAddress(txtAddress.getText());
         h.setCommunity(txtCommunity.getText());
+        JOptionPane.showMessageDialog(this, "Hospital Added Sucessfully");
+        
         //h.set
         
     }//GEN-LAST:event_jButton1ActionPerformed

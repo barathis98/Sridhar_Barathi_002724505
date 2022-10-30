@@ -33,29 +33,51 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("System Admin");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnPatient.setBackground(new java.awt.Color(102, 102, 102));
+        btnPatient.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnPatient.setForeground(new java.awt.Color(255, 255, 255));
+        btnPatient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/examination.png"))); // NOI18N
         btnPatient.setText("Manage Patients");
+        btnPatient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPatientActionPerformed(evt);
             }
         });
 
+        btnDoctor.setBackground(new java.awt.Color(102, 102, 102));
+        btnDoctor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDoctor.setForeground(new java.awt.Color(255, 255, 255));
+        btnDoctor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/medical-team.png"))); // NOI18N
         btnDoctor.setText("Manage Doctors");
+        btnDoctor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoctorActionPerformed(evt);
             }
         });
 
+        btnHospital.setBackground(new java.awt.Color(102, 102, 102));
+        btnHospital.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnHospital.setForeground(new java.awt.Color(255, 255, 255));
+        btnHospital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/medicine.png"))); // NOI18N
         btnHospital.setText("Manage Hospitals");
+        btnHospital.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHospitalActionPerformed(evt);
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/software-engineer.png"))); // NOI18N
         jButton1.setText("Manage Community Admins");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -67,17 +89,15 @@ public class SystemAdminLanding extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPatient)
-                    .addComponent(btnHospital))
+                .addGap(63, 63, 63)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnHospital, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnDoctor)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +110,7 @@ public class SystemAdminLanding extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHospital)
                     .addComponent(jButton1))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();

@@ -88,6 +88,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -128,6 +129,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnAddVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnAddVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (2).png"))); // NOI18N
         btnAddVitals.setText("Add Vitals");
+        btnAddVitals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddVitalsActionPerformed(evt);
@@ -174,6 +176,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnViewVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnViewVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/heart-attack (2).png"))); // NOI18N
         btnViewVitals.setText("View Vitals");
+        btnViewVitals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewVitalsActionPerformed(evt);
@@ -196,6 +199,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/back.png"))); // NOI18N
         btnBack.setText("Back");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -218,6 +222,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnGo.setForeground(new java.awt.Color(255, 255, 255));
         btnGo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/previous.png"))); // NOI18N
         btnGo.setText("Go");
+        btnGo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoActionPerformed(evt);

@@ -6,9 +6,13 @@ package UI;
 
 import Patient.Patient;
 import Patient.PatientDirectory;
+import SQLConnection.SQLConnection;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,7 +55,6 @@ public class ViewPerson extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPatients = new javax.swing.JTable();
-        btnEdit = new javax.swing.JButton();
         btnEdit1 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         txtAddNewPatient = new javax.swing.JButton();
@@ -59,6 +62,9 @@ public class ViewPerson extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -83,13 +89,10 @@ public class ViewPerson extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblPatients);
 
-        btnEdit.setText("Edit Patient");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
-            }
-        });
-
+        btnEdit1.setBackground(new java.awt.Color(102, 102, 102));
+        btnEdit1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEdit1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEdit1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEdit1.setText("Edit Patient");
         btnEdit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +100,10 @@ public class ViewPerson extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +111,10 @@ public class ViewPerson extends javax.swing.JFrame {
             }
         });
 
+        txtAddNewPatient.setBackground(new java.awt.Color(102, 102, 102));
+        txtAddNewPatient.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtAddNewPatient.setForeground(new java.awt.Color(255, 255, 255));
+        txtAddNewPatient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (3).png"))); // NOI18N
         txtAddNewPatient.setText("Add New Patient");
         txtAddNewPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +122,10 @@ public class ViewPerson extends javax.swing.JFrame {
             }
         });
 
+        btnDelete.setBackground(new java.awt.Color(102, 102, 102));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDelete.setText("Delete Patient");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,22 +137,17 @@ public class ViewPerson extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtAddNewPatient)
-                .addGap(35, 35, 35)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(74, 74, 74)
+                .addComponent(txtAddNewPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnEdit1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(293, 293, 293)
-                    .addComponent(btnEdit)
-                    .addContainerGap(294, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addComponent(btnDelete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,13 +160,10 @@ public class ViewPerson extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(txtAddNewPatient)
                     .addComponent(btnDelete))
-                .addContainerGap(135, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(171, 171, 171)
-                    .addComponent(btnEdit)
-                    .addContainerGap(171, Short.MAX_VALUE)))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnDelete, btnEdit1, jButton1, txtAddNewPatient});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,26 +172,6 @@ public class ViewPerson extends javax.swing.JFrame {
         // TODO add your handling code here:
         populateTable();
     }//GEN-LAST:event_formWindowOpened
-
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
-        int selectedRowIndex = tblPatients.getSelectedRow();
-        System.out.print("Inside edit");
-
-        if(selectedRowIndex<0)
-        {
-            JOptionPane.showMessageDialog(this, "Select a row to Edit it.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
-        int PatientId=selectedPatient.getPatientID();
-        EditPatient ep=new EditPatient(pd,selectedPatient,PatientId);
-        ep.setVisible(true);
-
-        // EditPatient editPatient = new EditPatient(SplitPane,patientDirectory,personDirectory,selectedPatient.getPatientID());
-        //  SplitPane.setRightComponent(editPatient);
-    }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnEdit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEdit1ActionPerformed
         // TODO add your handling code here:
@@ -235,6 +222,10 @@ public class ViewPerson extends javax.swing.JFrame {
         populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
     /**
      * @param args the command line arguments
      */
@@ -268,7 +259,6 @@ public class ViewPerson extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEdit1;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -7,6 +7,13 @@ package UI;
 import Doctor.Doctor;
 import Hospital.Hospital;
 import Hospital.HospitalDirectory;
+import SQLConnection.SQLConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,6 +50,9 @@ public class SystemAdminHospital extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -56,11 +66,15 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Name", "Address", "City", "Community"
             }
         ));
         jScrollPane1.setViewportView(tblHospital);
 
+        txtAdd.setBackground(new java.awt.Color(102, 102, 102));
+        txtAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtAdd.setForeground(new java.awt.Color(255, 255, 255));
+        txtAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (3).png"))); // NOI18N
         txtAdd.setText("Add Hospital");
         txtAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,6 +82,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         jButton2.setText("Edit Hospital");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +93,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             }
         });
 
+        txtDelete.setBackground(new java.awt.Color(102, 102, 102));
+        txtDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtDelete.setForeground(new java.awt.Color(255, 255, 255));
+        txtDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         txtDelete.setText("Delete Hospital");
         txtDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,14 +114,17 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                         .addGap(150, 150, 150)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addGap(113, 113, 113)
                         .addComponent(txtAdd)
                         .addGap(31, 31, 31)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(txtDelete)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -110,8 +135,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                     .addComponent(txtAdd)
                     .addComponent(jButton2)
                     .addComponent(txtDelete))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -123,10 +150,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
 
     private void txtAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddActionPerformed
         // TODO add your handling code here:
-        int selectedRowIndex = tblHospital.getSelectedRow();
-         DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
-        Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
-        AddHospital ah=new AddHospital(hd,selectedHospital);
+        //int selectedRowIndex = tblHospital.getSelectedRow();
+         //DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+        //Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
+        AddHospital ah=new AddHospital(hd);
         ah.setVisible(true);
     }//GEN-LAST:event_txtAddActionPerformed
 
@@ -157,6 +184,26 @@ public class SystemAdminHospital extends javax.swing.JFrame {
         eh.setVisible(true);
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+         try {
+             // TODO add your handling code here:
+             Connection con=SQLConnection.dbconnector();
+             String sql="truncate table Hospital";
+             PreparedStatement ps=con.prepareStatement(sql);
+             ps.executeUpdate();
+             ps.close();
+             for(Hospital h:hd.getHospitalDirectory())
+             {
+             String sql1="insert into Hospital (HospitalName,Address,City,Community) values('"+h.getName()+"','"+h.getAddress()+"','"+h.getCity()+"','"+h.getCommunity()+");";
+             PreparedStatement ps1=con.prepareStatement(sql1);
+             ps1.executeUpdate();
+             ps1.close();
+             }
+         } catch (SQLException ex) {
+             Logger.getLogger(SystemAdminHospital.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

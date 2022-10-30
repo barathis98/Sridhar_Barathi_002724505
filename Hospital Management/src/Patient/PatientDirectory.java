@@ -132,6 +132,7 @@ public class PatientDirectory {
             Logger.getLogger(DoctorDirectory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+      
 
 
     

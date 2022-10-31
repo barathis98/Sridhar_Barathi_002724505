@@ -22,6 +22,7 @@ public class AddHospital extends javax.swing.JFrame {
     public AddHospital(HospitalDirectory hd) {
         initComponents();
         this.hd=hd;
+         setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
        //this.h=h;
     }
 
@@ -120,7 +121,7 @@ public class AddHospital extends javax.swing.JFrame {
         h.setAddress(txtAddress.getText());
         h.setCommunity(txtCommunity.getText());
         JOptionPane.showMessageDialog(this, "Hospital Added Sucessfully");
-        
+        dispose();
         //h.set
         
     }//GEN-LAST:event_jButton1ActionPerformed

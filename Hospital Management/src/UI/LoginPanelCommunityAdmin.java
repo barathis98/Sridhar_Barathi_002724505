@@ -146,9 +146,9 @@ public class LoginPanelCommunityAdmin extends javax.swing.JPanel {
                 txtUname.setText("");
                 txtPass.setText("");
                 
-                MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
-                topFrame.dispose();
-                topFrame.setVisible(false);
+               // MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
+                //topFrame.dispose();
+                //topFrame.setVisible(false);
                 
                 
                 

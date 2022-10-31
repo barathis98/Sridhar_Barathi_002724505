@@ -47,6 +47,7 @@ public class SystemAdminHospital extends javax.swing.JFrame {
         txtAdd = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtDelete = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -104,6 +105,13 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,8 +127,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(txtDelete)))
-                .addContainerGap(117, Short.MAX_VALUE))
+                        .addComponent(txtDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
@@ -130,12 +140,18 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAdd)
-                    .addComponent(jButton2)
-                    .addComponent(txtDelete))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtAdd)
+                            .addComponent(jButton2)
+                            .addComponent(txtDelete))
+                        .addContainerGap(51, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(67, 67, 67))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
@@ -189,13 +205,13 @@ public class SystemAdminHospital extends javax.swing.JFrame {
          try {
              // TODO add your handling code here:
              Connection con=SQLConnection.dbconnector();
-             String sql="truncate table Hospital";
+             String sql="delete from Hospital";
              PreparedStatement ps=con.prepareStatement(sql);
              ps.executeUpdate();
              ps.close();
              for(Hospital h:hd.getHospitalDirectory())
              {
-             String sql1="insert into Hospital (HospitalName,Address,City,Community) values('"+h.getName()+"','"+h.getAddress()+"','"+h.getCity()+"','"+h.getCommunity()+");";
+             String sql1="insert into Hospital (HospitalName,Address,City,Community) values('"+h.getName()+"','"+h.getAddress()+"','"+h.getCity()+"','"+h.getCommunity()+"');";
              PreparedStatement ps1=con.prepareStatement(sql1);
              ps1.executeUpdate();
              ps1.close();
@@ -204,6 +220,11 @@ public class SystemAdminHospital extends javax.swing.JFrame {
              Logger.getLogger(SystemAdminHospital.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_formWindowClosed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PopulateTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +263,7 @@ public class SystemAdminHospital extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblHospital;

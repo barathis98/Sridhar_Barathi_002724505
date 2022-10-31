@@ -44,6 +44,8 @@ public class ViewPatients extends javax.swing.JFrame {
     {
         pd=new PatientDirectory();
         pd.getDbPatientDirectory();
+        initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
     /**

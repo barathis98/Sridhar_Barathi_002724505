@@ -55,8 +55,8 @@ public class DoctorDirectory {
                  Doctor d=new Doctor();
                  d.setName(st.getString("Name"));
                   d.setUsername(st.getString("Username"));
-                  d.setPhno(st.getInt("Phone Number"));
-                  d.setHospitalName(st.getString("Hospital Name"));
+                  d.setPhno(st.getInt("PhoneNumber"));
+                  d.setHospitalName(st.getString("HospitalName"));
                   d.setSpecialization(st.getString("Specialization"));
                   d.setCity(st.getString("City"));
                   list.add(d);

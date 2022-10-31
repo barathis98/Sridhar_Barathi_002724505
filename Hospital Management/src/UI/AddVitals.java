@@ -236,6 +236,7 @@ public class AddVitals extends javax.swing.JFrame {
                 }
             }
         }
+        dispose();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

@@ -14,6 +14,15 @@ import Person.Person;
 public class Patient extends Person{
     
     private int PatientID;
+    private String Doctor;
+
+    public void setDoctor(String Doctor) {
+        this.Doctor = Doctor;
+    }
+
+    public String getDoctor() {
+        return Doctor;
+    }
     EncounterHistory EH = new EncounterHistory();
    // EncounterHistory EH = new EncounterHistory();
     private boolean abnormal;

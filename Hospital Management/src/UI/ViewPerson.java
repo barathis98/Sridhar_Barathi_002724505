@@ -61,6 +61,7 @@ public class ViewPerson extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Patients");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -72,21 +73,29 @@ public class ViewPerson extends javax.swing.JFrame {
 
         tblPatients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID", "Object"
+                "Name", "Age", "Gender", "Residence", "City", "Community", "Patient ID", "Appointment Booked with", "Object"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, true, true, true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblPatients);
 
         btnEdit1.setBackground(new java.awt.Color(102, 102, 102));
@@ -184,7 +193,7 @@ public class ViewPerson extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
+        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 8);
         int PatientId=selectedPatient.getPatientID();
         EditPatient ep=new EditPatient(pd,selectedPatient,PatientId);
         ep.setVisible(true);
@@ -205,21 +214,30 @@ public class ViewPerson extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAddNewPatientActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
-         int selectedRowIndex = tblPatients.getSelectedRow();
-
-        if(selectedRowIndex<0)
-        {
-            JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
-            return;
+        try {
+            // TODO add your handling code here:
+            int selectedRowIndex = tblPatients.getSelectedRow();
+            
+            if(selectedRowIndex<0)
+            {
+                JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
+                return;
+            }
+            DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+            Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 8);
+            
+            pd.deletePatient(selectedPatient);
+            
+            JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
+            Connection con=SQLConnection.dbconnector();
+            int id=selectedPatient.getPatientID();
+            String sql="delete from Patient where PatientID='"+id+"';";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.executeUpdate();
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewPerson.class.getName()).log(Level.SEVERE, null, ex);
         }
-        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
-
-        pd.deletePatient(selectedPatient);
-
-        JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
-        populateTable();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
@@ -277,7 +295,7 @@ public void populateTable()
             //System.out.println("Inside loop");
              //System.out.println(p.getName());
              Object[] row=new Object[9];
-             row[7]=p;
+             row[8]=p;
              row[0]=p.getName();
              row[1]=p.getAge();
              row[2]=p.getGender();
@@ -286,6 +304,7 @@ public void populateTable()
              row[4]=p.getCity();
              row[5]=p.getCommunity();
              row[6]=p.getPatientID();
+             row[7]=p.getDoctor();
              
              
              model.addRow(row);

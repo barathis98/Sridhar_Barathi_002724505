@@ -174,6 +174,9 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this Doctor?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
          int selectedRowIndex = tblDoctor.getSelectedRow();
 
         if(selectedRowIndex<0)
@@ -188,6 +191,7 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(this, "Selected Doctor was deleted.");
         PopulateTable();
+    }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

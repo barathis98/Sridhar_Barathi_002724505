@@ -57,6 +57,7 @@ public class ViewPatientDetails extends javax.swing.JFrame {
         txtCommunity = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtCity = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -65,24 +66,17 @@ public class ViewPatientDetails extends javax.swing.JFrame {
             }
         });
 
-        txtName.setEditable(false);
-
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Name");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Age");
 
-        txtAge.setEditable(false);
         txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtAgeKeyReleased(evt);
             }
         });
-
-        txtpId.setEditable(false);
-
-        txtphNo.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Patient ID");
@@ -93,53 +87,57 @@ public class ViewPatientDetails extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Gender");
 
-        txtGender.setEditable(false);
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Residence");
-
-        txtResidence.setEditable(false);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Community");
 
-        txtCommunity.setEditable(false);
-
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("City");
 
-        txtCity.setEditable(false);
+        jButton1.setText("Edit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtphNo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtpId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtResidence, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtphNo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtpId, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtResidence, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCommunity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(62, 62, 62)
+                                .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(176, 176, 176)
+                        .addComponent(jButton1)))
                 .addContainerGap(585, Short.MAX_VALUE))
         );
 
@@ -180,7 +178,9 @@ public class ViewPatientDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jButton1)
+                .addContainerGap(154, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAge, txtCity, txtCommunity, txtGender, txtName, txtResidence, txtpId, txtphNo});
@@ -221,6 +221,61 @@ public class ViewPatientDetails extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (txtName.getText().equals(""))
+        {
+           JOptionPane.showMessageDialog(this, "Name feild cannot be empty","Field Empty",ERROR_MESSAGE); 
+        }
+        else if (txtAge.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Age cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtCity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "City cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtpId.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Patient Id cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtGender.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Gender cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtphNo.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Phone Number cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+         else if (txtCommunity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Community cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+         else
+        {
+        try {
+            // TODO add your handling code here:
+            //Connection con=null;
+            Connection con=SQLConnection.dbconnector();
+            Statement stmt=con.createStatement();
+            //String inserQuery;
+            
+           // String insertQuery="insert into Doctor (Name,UserName,Password) values("+txtName.getText()+","+txtUname.getText()+","+txtPass.getText()+")";
+          
+            insertQuery="update Patient set Name='"+txtName.getText()+"',Age='"+txtAge.getText()+"',Residence='"+txtResidence.getText()+"',City='"+txtCity.getText()+"',PhoneNumber='"+txtphNo.getText()+"',Gender='"+txtGender.getText()+"' where PatientID='"+loggedPatient+"'";
+           
+            stmt.executeUpdate(insertQuery);
+            stmt.close();
+            con.close();
+            JOptionPane.showMessageDialog(this, "Edited Sucessfully");
+        } catch (SQLException ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dispose();
+        
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
  public static boolean isNumeric(String str) { 
   try {  
     Double.parseDouble(str);  
@@ -263,6 +318,7 @@ public class ViewPatientDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

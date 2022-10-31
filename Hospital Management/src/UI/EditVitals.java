@@ -216,6 +216,9 @@ public class EditVitals extends javax.swing.JFrame {
 }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to save it?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         if(txtPulse.getText().equals("") || !isInteger(txtPulse.getText()))
         {
             JOptionPane.showMessageDialog(this, "Pulse Feild is invalid.");
@@ -276,6 +279,7 @@ public class EditVitals extends javax.swing.JFrame {
             txtPulse.setText("");
             txtBloodPressure.setText("");
             txtTemperature.setText("");
+        }
         }
     }//GEN-LAST:event_btnEditActionPerformed
 

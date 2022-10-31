@@ -43,6 +43,7 @@ public class PatientLanding extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/heart-attack (1).png"))); // NOI18N
         jButton1.setText("View Your Vitals");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,7 +70,10 @@ public class PatientLanding extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(102, 102, 102));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/profile.png"))); // NOI18N
         jButton3.setText("View Your Profile");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -81,34 +85,39 @@ public class PatientLanding extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addGap(189, 189, 189)
+                .addComponent(jButton3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(46, 46, 46)
+                        .addGap(59, 59, 59)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94))
+                        .addGap(81, 81, 81))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(208, 208, 208))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(jButton3)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(212, 212, 212))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addComponent(jButton3)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

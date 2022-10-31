@@ -204,6 +204,9 @@ public class EditPatient extends javax.swing.JFrame {
 }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this details?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         if(txtName.getText().equals(""))
         {
             JOptionPane.showMessageDialog(this, "Name Feild is empty.");
@@ -273,6 +276,7 @@ public class EditPatient extends javax.swing.JFrame {
             txtResidence.setText("");
             txtCity.setText("");
             txtCommunity.setText("");
+        }
         }
     }//GEN-LAST:event_btnEditActionPerformed
 

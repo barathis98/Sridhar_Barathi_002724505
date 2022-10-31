@@ -166,6 +166,9 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this Admin?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         try {
             // TODO add your handling code here:
             DefaultTableModel model=(DefaultTableModel) tblCAdmin.getModel();
@@ -193,6 +196,7 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 populateTable();
+        }
         }
         
     }//GEN-LAST:event_btnDeleteActionPerformed

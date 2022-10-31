@@ -174,7 +174,9 @@ public class SystemAdminHospital extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAddActionPerformed
 
     private void txtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteActionPerformed
-         
+         int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this Hospital Entry?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
              // TODO add your handling code here:
              int selectedRowIndex = tblHospital.getSelectedRow();
              
@@ -190,7 +192,7 @@ public class SystemAdminHospital extends javax.swing.JFrame {
              
              JOptionPane.showMessageDialog(this, "Selected Hospital was deleted.");
              
-          
+        }
     }//GEN-LAST:event_txtDeleteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

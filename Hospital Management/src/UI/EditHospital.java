@@ -5,6 +5,7 @@
 package UI;
 
 import Hospital.Hospital;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,11 +117,15 @@ public class EditHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this detail?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         h.setName(txtHName.getText());
         h.setCity(txtCity.getText());
         h.setAddress(txtAddress.getText());
         h.setCommunity(txtCommunity.getText());
         //h.set
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

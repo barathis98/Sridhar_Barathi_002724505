@@ -204,6 +204,7 @@ public class ViewPerson extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       
         pd=new PatientDirectory();
         if (i==1)
         {
@@ -218,14 +219,25 @@ public class ViewPerson extends javax.swing.JFrame {
 
     private void txtAddNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddNewPatientActionPerformed
         // TODO add your handling code here:
+        if(i==1)
+        {
+           Registration rs=new Registration(community,2);
+        rs.setVisible(true); 
+        }
+        else
+        {
         Registration rs=new Registration(0);
         rs.setVisible(true);
+        }
         //MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
        // topFrame.dispose();
         //topFrame.setVisible(false);
     }//GEN-LAST:event_txtAddNewPatientActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this patient?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (res==JOptionPane.YES_OPTION)
+        {
         try {
             // TODO add your handling code here:
             int selectedRowIndex = tblPatients.getSelectedRow();
@@ -249,6 +261,7 @@ public class ViewPerson extends javax.swing.JFrame {
             populateTable();
         } catch (SQLException ex) {
             Logger.getLogger(ViewPerson.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

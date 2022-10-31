@@ -21,10 +21,22 @@ public class Registration extends javax.swing.JFrame {
      */
     int s;
     private String insertQuery;
+    int i;
+    String community;
     public Registration(int s) {
         this.s=s;
         
         initComponents();
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
+    }
+    public Registration(String community,int i) {
+        System.out.println(community);
+        this.community=community;
+        this.i=i;
+        
+        initComponents();
+        txtCommunity.setText(this.community);
+        txtCommunity.setEditable(false);
         setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
@@ -249,6 +261,7 @@ public class Registration extends javax.swing.JFrame {
            }
            else if(s==0)
            {
+               
             insertQuery="insert into Patient (Name,UserName,Password,Age,Residence,City,Gender,Community,PhoneNumber,PatientID) values('"+txtName.getText().trim()+"','"+txtUname.getText().trim()+"','"+txtPass.getText().trim()+"','"+txtAge.getText()+"','"+txtResidence.getText()+"','"+txtCity.getText()+"','"+txtGender.getText()+"','"+txtCommunity.getText()+"','"+txtphNo.getText()+"','"+txtpId.getText()+"')";   
            }
             stmt.executeUpdate(insertQuery);

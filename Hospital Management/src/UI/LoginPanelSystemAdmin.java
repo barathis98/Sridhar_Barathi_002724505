@@ -12,6 +12,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.SwingUtilities;
 
 /**
@@ -115,6 +116,16 @@ public class LoginPanelSystemAdmin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+         if (txtUname.getText().equals(""))
+        {
+           JOptionPane.showMessageDialog(this, "UserName feild cannot be empty","Field Empty",ERROR_MESSAGE); 
+        }
+        else if (txtPass.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else
+        {
         try {
             // TODO add your handling code here:
             Connection con=SQLConnection.dbconnector();
@@ -152,6 +163,7 @@ public class LoginPanelSystemAdmin extends javax.swing.JPanel {
             
         } catch (SQLException ex) {
             Logger.getLogger(LoginPanelSystemAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed

@@ -13,6 +13,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 public class Registration extends javax.swing.JFrame {
 
     /**
@@ -74,6 +75,12 @@ public class Registration extends javax.swing.JFrame {
         });
 
         jLabel4.setText("Age");
+
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
+        });
 
         jLabel5.setText("Patient ID");
 
@@ -189,6 +196,44 @@ public class Registration extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+         if (txtName.getText().equals(""))
+        {
+           JOptionPane.showMessageDialog(this, "Name feild cannot be empty","Field Empty",ERROR_MESSAGE); 
+        }
+        else if (txtAge.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Age cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtCity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "City cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtpId.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Patient Id cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtGender.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Gender cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtPass.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtUname.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "UserName cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtphNo.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Phone Number cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+         else if (txtCommunity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Community cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+         else
+        {
         try {
             // TODO add your handling code here:
             //Connection con=null;
@@ -213,9 +258,34 @@ public class Registration extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dispose();
         
+        }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+         String age =txtAge.getText();
+        if (age.length()>3)
+        {
+            JOptionPane.showMessageDialog(this,"Enter Valid Age.");
+            txtAge.setText("");
+            
+        }
+        if (!isNumeric(age)& !age.equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Invalid Age");
+            txtAge.setText("");
+        }
+    }//GEN-LAST:event_txtAgeKeyReleased
+ public static boolean isNumeric(String str) { 
+  try {  
+    Double.parseDouble(str);  
+    return true;
+  } catch(NumberFormatException e){  
+    return false;  
+  }  
+    }
     /**
      * @param args the command line arguments
      */

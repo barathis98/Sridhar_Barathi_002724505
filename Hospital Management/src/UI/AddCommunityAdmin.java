@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 /**
  *
@@ -141,6 +142,24 @@ public class AddCommunityAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         if (txtName.getText().equals(""))
+        {
+           JOptionPane.showMessageDialog(this, "Name feild cannot be empty","Field Empty",ERROR_MESSAGE); 
+        }
+        else if (txtUName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Username cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtPassword.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Password cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+        else if (txtCommunity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Community cannot be empty","Field Empty",ERROR_MESSAGE);
+        }
+       else
+        {
         try {
             // TODO add your handling code here:
             Connection con=SQLConnection.dbconnector();
@@ -150,6 +169,9 @@ public class AddCommunityAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Community Admin added successfully");
         } catch (SQLException ex) {
             Logger.getLogger(AddCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

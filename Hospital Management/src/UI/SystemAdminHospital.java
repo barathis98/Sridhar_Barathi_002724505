@@ -61,13 +61,13 @@ public class SystemAdminHospital extends javax.swing.JFrame {
 
         tblHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Name", "Address", "City", "Community"
+                "Name", "Address", "City", "Community", "Object"
             }
         ));
         jScrollPane1.setViewportView(tblHospital);
@@ -174,21 +174,23 @@ public class SystemAdminHospital extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAddActionPerformed
 
     private void txtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteActionPerformed
-        // TODO add your handling code here:
-         int selectedRowIndex = tblHospital.getSelectedRow();
-
-        if(selectedRowIndex<0)
-        {
-            JOptionPane.showMessageDialog(this, "Select a Doctor to delete it.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
-        Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 5);
-
-        hd.deleteHospital(selectedHospital);
-
-        JOptionPane.showMessageDialog(this, "Selected Doctor was deleted.");
-        PopulateTable();
+         
+             // TODO add your handling code here:
+             int selectedRowIndex = tblHospital.getSelectedRow();
+             
+             if(selectedRowIndex<0)
+             {
+                 JOptionPane.showMessageDialog(this, "Select a Hospital to delete it.");
+                 return;
+             }
+             DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
+             Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
+             
+             hd.deleteHospital(selectedHospital);
+             
+             JOptionPane.showMessageDialog(this, "Selected Hospital was deleted.");
+             
+          
     }//GEN-LAST:event_txtDeleteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

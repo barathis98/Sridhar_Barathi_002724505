@@ -33,6 +33,8 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
             PreparedStatement ps=con.prepareStatement(sql);
             st=ps.executeQuery();
             setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
+            st.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,8 +53,10 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
         tblCAdmin = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Community Admin");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -93,6 +97,16 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 102));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Refresh");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,8 +120,10 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
                         .addGap(191, 191, 191)
                         .addComponent(jButton1)
                         .addGap(88, 88, 88)
-                        .addComponent(btnDelete)))
-                .addContainerGap(229, Short.MAX_VALUE))
+                        .addComponent(btnDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnDelete, jButton1});
@@ -120,7 +136,8 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(btnDelete))
+                    .addComponent(btnDelete)
+                    .addComponent(jButton2))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -130,8 +147,16 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        populateTable();
+        try {
+            // TODO add your handling code here:
+            Connection con=SQLConnection.dbconnector();
+            String sql="select * from CommunityAdmin";
+            PreparedStatement ps=con.prepareStatement(sql);
+            st=ps.executeQuery();
+            populateTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -167,10 +192,26 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
              }
         } catch (SQLException ex) {
             Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                
+                populateTable();
         }
         
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            Connection con=SQLConnection.dbconnector();
+            String sql="select * from CommunityAdmin";
+            PreparedStatement ps=con.prepareStatement(sql);
+            st=ps.executeQuery();
+            
+            populateTable();
+            st.close();
+            ps.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewCommunityAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,6 +251,7 @@ public class ViewCommunityAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblCAdmin;
     // End of variables declaration//GEN-END:variables

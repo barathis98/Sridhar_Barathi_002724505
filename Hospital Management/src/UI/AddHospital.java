@@ -6,6 +6,12 @@ package UI;
 
 import Hospital.Hospital;
 import Hospital.HospitalDirectory;
+import SQLConnection.SQLConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -114,15 +120,29 @@ public class AddHospital extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        h=hd.addHospital();
-        h.setName(txtHName.getText());
-        h.setCity(txtCity.getText());
-        h.setAddress(txtAddress.getText());
-        h.setCommunity(txtCommunity.getText());
-        JOptionPane.showMessageDialog(this, "Hospital Added Sucessfully");
-        dispose();
-        //h.set
+        try {
+            // TODO add your handling code here:
+            h=hd.addHospital();
+            h.setName(txtHName.getText());
+            h.setCity(txtCity.getText());
+            h.setAddress(txtAddress.getText());
+            h.setCommunity(txtCommunity.getText());
+            JOptionPane.showMessageDialog(this, "Hospital Added Sucessfully");
+            Connection con=SQLConnection.dbconnector();
+            Statement stmt=con.createStatement();
+            //String inserQuery;
+            String insertQuery = "insert into Hospital (HospitalName,Address,City,Community) values('"+txtHName.getText().trim()+"','"+txtAddress.getText().trim()+"','"+txtCity.getText().trim()+"','"+txtCommunity.getText()+"')";
+
+            // String insertQuery="insert into Doctor (Name,UserName,Password) values("+txtName.getText()+","+txtUname.getText()+","+txtPass.getText()+")";
+            
+            stmt.executeUpdate(insertQuery);
+            stmt.close();
+            con.close();
+            dispose();
+            //h.set
+        } catch (SQLException ex) {
+            Logger.getLogger(AddHospital.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

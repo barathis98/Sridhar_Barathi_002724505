@@ -24,6 +24,7 @@ public class ViewVitals extends javax.swing.JFrame {
     public ViewVitals(int loggedPatient) {
         initComponents();
        // this.pd=pd;
+       setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
        pd.getDbPatientDirectory();
         this.loggedPatient=loggedPatient;
     }

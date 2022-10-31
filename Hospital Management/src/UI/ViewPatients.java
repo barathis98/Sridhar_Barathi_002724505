@@ -11,6 +11,7 @@ import Patient.Patient;
 import Patient.PatientDirectory;
 import SQLConnection.SQLConnection;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -470,20 +471,29 @@ public class ViewPatients extends javax.swing.JFrame {
         int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this patient?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
-        int selectedRowIndex = tblPatients.getSelectedRow();
-
-        if(selectedRowIndex<0)
-        {
-            JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
-
-        pd.deletePatient(selectedPatient);
-
-        JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
-        populateTable();
+            try {
+                int selectedRowIndex = tblPatients.getSelectedRow();
+                
+                if(selectedRowIndex<0)
+                {
+                    JOptionPane.showMessageDialog(this, "Select a Patient to delete it.");
+                    return;
+                }
+                DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
+                Patient selectedPatient = (Patient) model.getValueAt(selectedRowIndex, 7);
+                
+                pd.deletePatient(selectedPatient);
+                
+                JOptionPane.showMessageDialog(this, "Selected Patient was deleted.");
+                Connection con=SQLConnection.dbconnector();
+                int id=selectedPatient.getPatientID();
+                String sql="delete from Patient where PatientID='"+id+"';";
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.executeUpdate();
+                populateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewPatients.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 

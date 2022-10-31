@@ -25,12 +25,14 @@ public class ViewPerson extends javax.swing.JFrame {
      */
     String community;
      PatientDirectory pd;
+     int i;
     public ViewPerson(String community) {
         initComponents();
         setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
         pd=new PatientDirectory();
         pd.getDbCommunityPatientDirectory(community);
         this.community=community;
+        i =1;
         System.out.print(community);
         populateTable();
     }
@@ -40,6 +42,7 @@ public class ViewPerson extends javax.swing.JFrame {
         pd=new PatientDirectory();
         pd.getDbPatientDirectory();
         this.community=community;
+        i =0;
         System.out.print(community);
         populateTable();
     }
@@ -201,6 +204,15 @@ public class ViewPerson extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        pd=new PatientDirectory();
+        if (i==1)
+        {
+         pd.getDbCommunityPatientDirectory(community);
+        }
+        else
+        {
+            pd.getPatientDirectory();
+        }
         populateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 

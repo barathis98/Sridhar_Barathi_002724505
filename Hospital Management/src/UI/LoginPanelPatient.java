@@ -217,9 +217,9 @@ public class LoginPanelPatient extends javax.swing.JPanel {
         // TODO add your handling code here:s
         Registration rs=new Registration(0);
         rs.setVisible(true);
-        MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
-        topFrame.dispose();
-        topFrame.setVisible(false);
+        //MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);
+       // topFrame.dispose();
+        //topFrame.setVisible(false);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -222,8 +222,9 @@ public class AddDoctor extends javax.swing.JFrame {
             Connection con=SQLConnection.dbconnector();
             Statement stmt=con.createStatement();
             //String inserQuery;
-            String insertQuery ="insert into Doctor (Name,UserName,Password,City,PhoneNumbmer,Specialization,HospitalName) values('"+txtName.getText()+"','"+txtUname.getText()+"','"+txtPass.getText()+"','"+txtCity.getText()+"','"+txtphNo.getText()+"','"+txtHospital.getText()+"')";
-
+            //String insertQuery ="insert into Doctor (Name,Password,City,PhoneNumber,Specialization,HospitalName) values('"+txtName.getText()+"','"+txtPass.getText()+"','"+txtCity.getText()+"','"+txtphNo.getText()+"','"+txtHospital.getText()+"')";
+            //String insertQuery ="insert into Doctor (Name,Username,Password,City,PhoneNumber,Specialization,HospitalName) values('"+txtName.getText()+"','"+txtUname.getText()+"','"+txtPass.getText()+"','"+txtCity.getText()+"','"+txtphNo.getText()+"','"+txtHospital.getText()+"')";
+            String insertQuery ="insert into Doctor(Name,Username,Password,City,Specialization,HospitalName,PhoneNumber) values('"+txtName.getText()+"','"+txtUname.getText()+"','"+txtPass.getText()+"','"+txtCity.getText()+"','"+txtSpecialization.getText()+"','"+txtHospital.getText()+"','"+txtphNo.getText()+"')";
             // String insertQuery="insert into Doctor (Name,UserName,Password) values("+txtName.getText()+","+txtUname.getText()+","+txtPass.getText()+")";
             
             stmt.executeUpdate(insertQuery);

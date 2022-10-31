@@ -177,20 +177,30 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
         int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this Doctor?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
-         int selectedRowIndex = tblDoctor.getSelectedRow();
-
-        if(selectedRowIndex<0)
-        {
-            JOptionPane.showMessageDialog(this, "Select a Doctor to delete it.");
-            return;
-        }
-        DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
-        Doctor selectedDoctor = (Doctor) model.getValueAt(selectedRowIndex, 5);
-
-        dd.deleteDoctor(selectedDoctor);
-
-        JOptionPane.showMessageDialog(this, "Selected Doctor was deleted.");
-        PopulateTable();
+            try {
+                int selectedRowIndex = tblDoctor.getSelectedRow();
+                
+                if(selectedRowIndex<0)
+                {
+                    JOptionPane.showMessageDialog(this, "Select a Doctor to delete it.");
+                    return;
+                }
+                DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
+                Doctor selectedDoctor = (Doctor) model.getValueAt(selectedRowIndex, 5);
+                String sd=selectedDoctor.getName();
+                
+                dd.deleteDoctor(selectedDoctor);
+                Connection con=SQLConnection.dbconnector();
+                
+                String sql="delete from Doctor where Name='"+sd+"';";
+                PreparedStatement ps=con.prepareStatement(sql);
+                ps.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this, "Selected Doctor was deleted.");
+                PopulateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(SystemAdminDoctor.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     }//GEN-LAST:event_jButton3ActionPerformed
 

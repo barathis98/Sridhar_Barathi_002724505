@@ -210,8 +210,10 @@ public class ViewPerson extends javax.swing.JFrame {
         {
          pd.getDbCommunityPatientDirectory(community);
         }
-        else
+        if(i==0)
         {
+            pd=new PatientDirectory();
+        pd.getDbPatientDirectory();
             pd.getPatientDirectory();
         }
         populateTable();

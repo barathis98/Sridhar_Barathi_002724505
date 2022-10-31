@@ -17,6 +17,7 @@ public class HospitalAdminLanding extends javax.swing.JFrame {
     public HospitalAdminLanding(String selectedHospital) {
         initComponents();
         this.selectedHospital=selectedHospital;
+        System.out.println(selectedHospital);
         setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
@@ -86,7 +87,7 @@ public class HospitalAdminLanding extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SystemAdminDoctor ad=new SystemAdminDoctor();
+        SystemAdminDoctor ad=new SystemAdminDoctor(selectedHospital);
         ad.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

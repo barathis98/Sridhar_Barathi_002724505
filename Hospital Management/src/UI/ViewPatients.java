@@ -70,8 +70,6 @@ public class ViewPatients extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        btnGo = new javax.swing.JButton();
-        txtSearch = new javax.swing.JTextField();
         btnVitalRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,18 +218,6 @@ public class ViewPatients extends javax.swing.JFrame {
             }
         });
 
-        btnGo.setBackground(new java.awt.Color(102, 102, 102));
-        btnGo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnGo.setForeground(new java.awt.Color(255, 255, 255));
-        btnGo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/previous.png"))); // NOI18N
-        btnGo.setText("Go");
-        btnGo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoActionPerformed(evt);
-            }
-        });
-
         btnVitalRefresh.setBackground(new java.awt.Color(102, 102, 102));
         btnVitalRefresh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVitalRefresh.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,10 +239,7 @@ public class ViewPatients extends javax.swing.JFrame {
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(262, 262, 262)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
@@ -291,14 +274,9 @@ public class ViewPatients extends javax.swing.JFrame {
                             .addComponent(btnViewVitals)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(btnGo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnRefresh))
-                            .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRefresh))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDeleteVital)
@@ -523,33 +501,6 @@ public class ViewPatients extends javax.swing.JFrame {
       //  SplitPane.setRightComponent(editPatient);
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
-        // TODO add your handling code here:
-        String SearchString = txtSearch.getText();
-        DefaultTableModel model = (DefaultTableModel) tblPatients.getModel();
-        model.setRowCount(0);
-
-        for(Patient p: pd.getPatientDirectory())
-        {
-            System.out.println(SearchString);
-            System.out.println(p.getName());
-            if(p.getName().equals(SearchString))
-            {
-                Object[] row = new Object[7];
-                row[0]=p;
-                row[1]=p.getAge();
-                row[2]=p.getGender();
-                row[3]=p.getResidence();
-                row[4]=p.getCity();
-                row[5]=p.getCommunity();
-                row[6]=p.getPatientID();
-
-                model.addRow(row);
-                break;
-            }
-        }
-    }//GEN-LAST:event_btnGoActionPerformed
-
     private void btnVitalRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVitalRefreshActionPerformed
         // TODO add your handling code here:
         
@@ -667,7 +618,6 @@ public class ViewPatients extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteVital;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEditVital;
-    private javax.swing.JButton btnGo;
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnViewVitals;
     private javax.swing.JButton btnVitalRefresh;
@@ -675,7 +625,6 @@ public class ViewPatients extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblPatients;
     private javax.swing.JTable tblVitals;
-    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 public void populateTable()
     {

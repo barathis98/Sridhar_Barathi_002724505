@@ -66,4 +66,29 @@ public class DoctorDirectory {
         }
         //return list;
     }
+    public void getHospitalDoctorDirectory(String Hospital)
+    {
+        try {
+            Connection con=SQLConnection.dbconnector();
+            String sql="select * from Doctor where HospitalName='"+Hospital+"'";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet st=ps.executeQuery();
+            
+             while(st.next())
+             {
+                 
+                 Doctor d=new Doctor();
+                 d.setName(st.getString("Name"));
+                  d.setUsername(st.getString("Username"));
+                  d.setPhno(st.getInt("PhoneNumber"));
+                  d.setHospitalName(st.getString("HospitalName"));
+                  d.setSpecialization(st.getString("Specialization"));
+                  d.setCity(st.getString("City"));
+                  list.add(d);
+             }
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorDirectory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //return list;
+    }
 }

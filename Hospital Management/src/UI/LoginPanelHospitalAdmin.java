@@ -134,22 +134,22 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
             Statement stmt=con.createStatement();
             Statement stmt1=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select Username,Password from HospitalAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select * from HospitalAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);
             
             if (rst.next())
             {
-                while(rst.next())
-                {
-                    loggedPatient=rst.getString("Hospital Name");
+                
+                    loggedPatient=rst.getString("HospitalName");
                     //String insertQuery="update Patient set Doctor='"+loggedPatient+"'where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
                     //stmt1.executeQuery(insertQuery);
                     
                     
-                }
+                
                 JOptionPane.showMessageDialog(this, "Login Sucess", query, HEIGHT);
+                System.out.println(loggedPatient);
                 HospitalAdminLanding al=new HospitalAdminLanding(loggedPatient);
                 al.setVisible(true);
                // MainScreen topFrame = (MainScreen) SwingUtilities.getWindowAncestor(this);

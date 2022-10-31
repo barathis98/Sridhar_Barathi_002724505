@@ -37,6 +37,13 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
         dd=new DoctorDirectory();
         dd.getDoctorDirectory();
     }
+    public SystemAdminDoctor(String selectedHospital) {
+        initComponents();
+        //this.loggedPatient=loggedPatient;
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
+        dd=new DoctorDirectory();
+        dd.getHospitalDoctorDirectory(selectedHospital);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

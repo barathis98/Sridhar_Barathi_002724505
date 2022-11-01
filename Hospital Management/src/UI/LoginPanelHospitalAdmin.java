@@ -134,7 +134,7 @@ public class LoginPanelHospitalAdmin extends javax.swing.JPanel {
             Statement stmt=con.createStatement();
             Statement stmt1=con.createStatement();
            // String query="select Username,Password from Doctor where Username="+txtUname.getText()+"and Password="+txtPass.getText();
-            String query="select * from HospitalAdmin where Username='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
+            String query="select * from HospitalAdmin where UserName='"+txtUname.getText()+"'and Password='"+txtPass.getText()+"';";
             //String query="select Username,Password from Doctor where Username='barathi 'and Password='asdf';";
             
             ResultSet rst=stmt.executeQuery(query);

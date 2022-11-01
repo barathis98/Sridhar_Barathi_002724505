@@ -11,9 +11,11 @@ package UI;
 import Patient.Patient;
 import Patient.PatientDirectory;
 import SQLConnection.SQLConnection;
+import static UI.Registration.isNumeric;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 public class ViewPatientDetails extends javax.swing.JFrame {
@@ -96,6 +98,9 @@ public class ViewPatientDetails extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("City");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Edit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,6 +221,7 @@ public class ViewPatientDetails extends javax.swing.JFrame {
                 txtCity.setText(p.getCity());
                 txtCommunity.setText(p.getCommunity());
                 txtGender.setText(p.getGender());
+                //System.out.println(p.getPhNo());
                 txtphNo.setText(String.valueOf(p.getPhNo()));
                 txtResidence.setText(p.getResidence());
             }
@@ -252,6 +258,19 @@ public class ViewPatientDetails extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this, "Community cannot be empty","Field Empty",ERROR_MESSAGE);
         }
+          else if (!Pattern.matches("[0-9]{10}",txtphNo.getText()))
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a valid Phone Number","Invalid Data",ERROR_MESSAGE);
+        }
+         else if(!isNumeric(txtpId.getText()))
+         {
+             JOptionPane.showMessageDialog(this, "Please Enter a valid PatientId","Invalid Data",ERROR_MESSAGE);
+            
+         }
+         else if (isNumeric(txtName.getText()))
+         {
+             JOptionPane.showMessageDialog(this, "Please Enter a valid Name","Invalid Data",ERROR_MESSAGE);
+         }
          else
         {
         try {

@@ -180,7 +180,7 @@ public class EditDoctor extends javax.swing.JFrame {
 }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this detail?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to update this detail?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
         if(txtName.getText().equals(""))
@@ -211,18 +211,18 @@ public class EditDoctor extends javax.swing.JFrame {
         }
         else
         {
-            for(Doctor d:dd.getList())
-            {
+            
                
-                    d.setName(txtName.getText());
-                    d.setPhno(Integer.parseInt(txtPhNo.getText()));
-                    d.setSpecialization(txtSpecialization.getText());
+                    selectedDoctor.setName(txtName.getText());
+                    selectedDoctor.setPhno(Integer.parseInt(txtPhNo.getText()));
+                    selectedDoctor.setSpecialization(txtSpecialization.getText());
                     //d.setResidence(txtCommunity.getText());
-                    d.setCity(txtCity.getText());
+                    selectedDoctor.setCity(txtCity.getText());
+                    
                     //d.setCommunity(txtCommunity.getText());
                     //d.setPatientID(Integer.parseInt(txtHospital.getText()));
                
-            }
+            
 
             JOptionPane.showMessageDialog(this, "Selected Patient was Updated.");
             txtName.setText("");
@@ -234,6 +234,7 @@ public class EditDoctor extends javax.swing.JFrame {
             //txtCommunity.setText("");
         }
         }
+        dispose();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

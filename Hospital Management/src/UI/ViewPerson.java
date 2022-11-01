@@ -212,13 +212,17 @@ public class ViewPerson extends javax.swing.JFrame {
         }
         if(i==0)
         {
-            pd=new PatientDirectory();
+           pd=new PatientDirectory();
         pd.getDbPatientDirectory();
             pd.getPatientDirectory();
         }
         populateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public void refresh()
+    {
+        populateTable();
+    }
     private void txtAddNewPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddNewPatientActionPerformed
         // TODO add your handling code here:
         if(i==1)

@@ -6,6 +6,12 @@ package UI;
 
 import Patient.Patient;
 import Patient.PatientDirectory;
+import SQLConnection.SQLConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +60,8 @@ public class EditPatient extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         lblCity = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtphNo = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -113,13 +121,20 @@ public class EditPatient extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Phone Number");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 12, Short.MAX_VALUE)
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
                     .addComponent(lblAge)
                     .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -131,22 +146,20 @@ public class EditPatient extends javax.swing.JFrame {
                         .addComponent(lblCity, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtName)
-                        .addComponent(txtAge)
-                        .addComponent(txtGender)
-                        .addComponent(txtResidence)
-                        .addComponent(txtCity)
-                        .addComponent(txtCommunity)
-                        .addComponent(txtPatientID, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnEdit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBack)))
+                        .addComponent(btnBack))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtphNo, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtResidence, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtCity, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtCommunity, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtPatientID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,11 +194,15 @@ public class EditPatient extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtPatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(txtphNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEdit)
                     .addComponent(btnBack))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -204,7 +221,7 @@ public class EditPatient extends javax.swing.JFrame {
 }
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this details?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to update this details?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
         if(txtName.getText().equals(""))
@@ -258,13 +275,30 @@ public class EditPatient extends javax.swing.JFrame {
             {
                 if(p.getPatientID()==PatientId)
                 {
-                    p.setName(txtName.getText());
-                    p.setAge(Integer.parseInt(txtAge.getText()));
-                    p.setGender(txtGender.getText());
-                    p.setResidence(txtResidence.getText());
-                    p.setCity(txtCity.getText());
-                    p.setCommunity(txtCommunity.getText());
-                    p.setPatientID(Integer.parseInt(txtPatientID.getText()));
+                    try {
+                        p.setName(txtName.getText());
+                        p.setAge(Integer.parseInt(txtAge.getText()));
+                        p.setGender(txtGender.getText());
+                        p.setResidence(txtResidence.getText());
+                        p.setCity(txtCity.getText());
+                        p.setCommunity(txtCommunity.getText());
+                        p.setPatientID(Integer.parseInt(txtPatientID.getText()));
+                        
+                        Connection con=SQLConnection.dbconnector();
+                        Statement stmt=con.createStatement();
+                        String insertQuery;
+                        
+                        // String insertQuery="insert into Doctor (Name,UserName,Password) values("+txtName.getText()+","+txtUname.getText()+","+txtPass.getText()+")";
+                        //selectedPatient.get
+                        insertQuery="update Patient set Name='"+txtName.getText()+"',Age='"+txtAge.getText()+"',Residence='"+txtResidence.getText()+"',City='"+txtCity.getText()+"',PhoneNumber='"+txtphNo.getText()+"',Gender='"+txtGender.getText()+"' where PatientID='"+selectedPatient.getPatientID()+"'";
+                        
+                        stmt.executeUpdate(insertQuery);
+                        stmt.close();
+                        con.close();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(EditPatient.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
                 }
             }
 
@@ -276,8 +310,10 @@ public class EditPatient extends javax.swing.JFrame {
             txtResidence.setText("");
             txtCity.setText("");
             txtCommunity.setText("");
+            
         }
         }
+        dispose();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -296,6 +332,8 @@ public class EditPatient extends javax.swing.JFrame {
         txtResidence.setText(selectedPatient.getResidence());
         txtCity.setText(selectedPatient.getCity());
         txtCommunity.setText(selectedPatient.getCommunity());
+        System.out.print(selectedPatient.getPhNo());
+        txtphNo.setText(String.valueOf(selectedPatient.getPhNo()));
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -333,6 +371,7 @@ public class EditPatient extends javax.swing.JFrame {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEdit;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblCity;
     private javax.swing.JLabel lblCommunity;
@@ -347,5 +386,6 @@ public class EditPatient extends javax.swing.JFrame {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPatientID;
     private javax.swing.JTextField txtResidence;
+    private javax.swing.JTextField txtphNo;
     // End of variables declaration//GEN-END:variables
 }

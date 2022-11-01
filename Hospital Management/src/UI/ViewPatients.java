@@ -89,6 +89,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnRefresh.setText("Refresh");
+        btnRefresh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +120,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnDeleteVital.setForeground(new java.awt.Color(255, 255, 255));
         btnDeleteVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDeleteVital.setText("Delete Vitals");
+        btnDeleteVital.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnDeleteVital.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeleteVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteVitalActionPerformed(evt);
@@ -130,6 +133,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnAddVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnAddVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/add (2).png"))); // NOI18N
         btnAddVitals.setText("Add Vitals");
+        btnAddVitals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnAddVitals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,6 +170,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnEditVital.setForeground(new java.awt.Color(255, 255, 255));
         btnEditVital.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEditVital.setText("Edit Vitals");
+        btnEditVital.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEditVital.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEditVital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditVitalActionPerformed(evt);
@@ -177,6 +183,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnViewVitals.setForeground(new java.awt.Color(255, 255, 255));
         btnViewVitals.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/heart-attack (2).png"))); // NOI18N
         btnViewVitals.setText("View Vitals");
+        btnViewVitals.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnViewVitals.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewVitals.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,6 +196,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/delete (2).png"))); // NOI18N
         btnDelete.setText("Delete Patient");
+        btnDelete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -200,6 +209,7 @@ public class ViewPatients extends javax.swing.JFrame {
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/back.png"))); // NOI18N
         btnBack.setText("Back");
+        btnBack.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +222,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/edit.png"))); // NOI18N
         btnEdit.setText("Edit Patient");
+        btnEdit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnEdit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -223,6 +235,8 @@ public class ViewPatients extends javax.swing.JFrame {
         btnVitalRefresh.setForeground(new java.awt.Color(255, 255, 255));
         btnVitalRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         btnVitalRefresh.setText("Refresh");
+        btnVitalRefresh.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnVitalRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVitalRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVitalRefreshActionPerformed(evt);
@@ -242,14 +256,14 @@ public class ViewPatients extends javax.swing.JFrame {
                         .addGap(262, 262, 262)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnViewVitals)
+                        .addComponent(btnViewVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAddVitals)
-                        .addGap(12, 12, 12)
-                        .addComponent(btnEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
                         .addComponent(btnDelete))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -257,35 +271,45 @@ public class ViewPatients extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnEditVital)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteVital)))
+                        .addComponent(btnDeleteVital)
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAddVitals, btnBack, btnDelete, btnDeleteVital, btnEdit, btnEditVital, btnRefresh, btnViewVitals, btnVitalRefresh});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDelete)
-                            .addComponent(btnEdit)
-                            .addComponent(btnAddVitals)
-                            .addComponent(btnViewVitals)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRefresh))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnDelete)
+                                    .addComponent(btnEdit)
+                                    .addComponent(btnAddVitals)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRefresh)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnViewVitals, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeleteVital)
+                    .addComponent(btnVitalRefresh)
                     .addComponent(btnEditVital)
-                    .addComponent(btnVitalRefresh))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnDeleteVital))
+                .addGap(17, 17, 17)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAddVitals, btnBack, btnDelete, btnDeleteVital, btnEdit, btnEditVital, btnRefresh, btnViewVitals, btnVitalRefresh});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -503,6 +527,53 @@ public class ViewPatients extends javax.swing.JFrame {
 
     private void btnVitalRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVitalRefreshActionPerformed
         // TODO add your handling code here:
+        int selectedRowIndex = tblPatients.getSelectedRow();
+
+        if(selectedRowIndex<0)
+        {
+            JOptionPane.showMessageDialog(this, "Select a patient to view Vital Signs.");
+            return;
+        }
+
+        DefaultTableModel modelpat = (DefaultTableModel) tblPatients.getModel();
+        Patient selectedPatient = (Patient) modelpat.getValueAt(selectedRowIndex, 7);
+        int PatientID = selectedPatient.getPatientID();
+
+        DefaultTableModel model = (DefaultTableModel) tblVitals.getModel();
+        model.setRowCount(0);
+        //Patient p=new Patient();
+
+        for(Patient p: pd.getPatientDirectory())
+        {
+            
+            
+            if(p.getPatientID()==PatientID)
+            {
+                EncounterHistory eh;
+                
+                eh=p.getEH();
+                eh.EncounterHistory(PatientID);
+                eh.deleteEncounterHistory(PatientID);
+                System.out.println(p.getName());
+                Object[] row = new Object[6];
+               // p.getEH().EncounterHistory(PatientID);
+                //System.out.println(p.getEH());
+                
+                for(Encounter e: eh.getEncounterHistory())
+                {
+                    //System.out.print(e.getPulse());
+                    row[0]=p;
+                    row[1]=p.getPatientID();
+                    row[2]=e.getPulse();
+                    row[3]=e.getBloodPressure();
+                    row[4]=e.getTemperature();
+                    row[5]=e.getUpdateTime();
+
+                    model.addRow(row);
+                }
+            }
+        }
+       
         
     }//GEN-LAST:event_btnVitalRefreshActionPerformed
 

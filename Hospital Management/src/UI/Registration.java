@@ -292,6 +292,14 @@ public class Registration extends javax.swing.JFrame {
          {
              JOptionPane.showMessageDialog(this, "Please Enter a valid Name","Invalid Data",ERROR_MESSAGE);
          }
+         else if(txtPass.getText().length()<8)
+         {
+             JOptionPane.showMessageDialog(this, "Password should be atleast 8 characters","Invalid Data",ERROR_MESSAGE);
+         }
+         else if(! (txtpId.getText().length()==5))
+         {
+             JOptionPane.showMessageDialog(this, "Patient ID should be 5 characters","Invalid Data",ERROR_MESSAGE);
+         }
          else
         {
         try {

@@ -119,6 +119,11 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         jButton4.setText("Refresh");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,11 +212,20 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblDoctor.getSelectedRow();
+        if (selectedRowIndex<0)
+        {
+          JOptionPane.showMessageDialog(this, "Selected a row to edit.");  
+        }
         DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
         Doctor selectedDoctor = (Doctor) model.getValueAt(selectedRowIndex, 5);
         EditDoctor ed=new EditDoctor(dd,selectedDoctor);
         ed.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        PopulateTable();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

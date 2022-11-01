@@ -63,6 +63,7 @@ public class PatientDirectory {
                  p.setCommunity(st.getString("Community"));
                  p.setResidence(st.getString("Residence"));
                  p.setDoctor(st.getString("Doctor"));
+                 p.setPhNo(st.getInt("PhoneNumber"));
                 
                  patientDirectory.add(p);
            
@@ -95,6 +96,7 @@ public class PatientDirectory {
                  p.setCommunity(st.getString("Community"));
                  p.setResidence(st.getString("Residence"));
                  p.setDoctor(st.getString("Doctor"));
+                 p.setPhNo(st.getInt("PhoneNumber"));
                 
                  patientDirectory.add(p);
            
@@ -126,6 +128,7 @@ public class PatientDirectory {
                  p.setCommunity(st.getString("Community"));
                  p.setResidence(st.getString("Residence"));
                  p.setDoctor(st.getString("Doctor"));
+                 p.setPhNo(st.getInt("PhoneNumber"));
                  
                 
                  patientDirectory.add(p);

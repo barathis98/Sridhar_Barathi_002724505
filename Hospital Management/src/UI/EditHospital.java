@@ -20,6 +20,7 @@ public class EditHospital extends javax.swing.JFrame {
     public EditHospital(Hospital h) {
         initComponents();
         this.h=h;
+        setDefaultCloseOperation(AddVitals.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -56,6 +57,9 @@ public class EditHospital extends javax.swing.JFrame {
 
         jLabel1.setText("Hospital Name");
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Edit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,14 +121,32 @@ public class EditHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int res=JOptionPane.showConfirmDialog(this, "Do you want to delete this detail?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        int res=JOptionPane.showConfirmDialog(this, "Do you want to update this detail?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
+             if(txtHName.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Name Feild is empty.");
+        }
+        else if(txtCity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "City Feild is empty");
+        }
+        else if(txtCommunity.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Community Feild is empty");
+        }
+             else
+        {
+            
+        
         h.setName(txtHName.getText());
         h.setCity(txtCity.getText());
         h.setAddress(txtAddress.getText());
         h.setCommunity(txtCommunity.getText());
         //h.set
+        dispose();
+        }
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

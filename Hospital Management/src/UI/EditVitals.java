@@ -219,17 +219,17 @@ public class EditVitals extends javax.swing.JFrame {
         int res=JOptionPane.showConfirmDialog(this, "Do you want to save it?", "Confirm" , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (res==JOptionPane.YES_OPTION)
         {
-        if(txtPulse.getText().equals("") || !isInteger(txtPulse.getText()))
+        if(txtPulse.getText().equals("") || !isInteger(txtPulse.getText())||Integer.parseInt(txtPulse.getText())<200)
         {
-            JOptionPane.showMessageDialog(this, "Pulse Feild is invalid.");
+            JOptionPane.showMessageDialog(this, "Pulse Field is invalid.");
         }
-        else if(txtTemperature.getText().equals("") || !isInteger(txtTemperature.getText()))
+        else if(txtTemperature.getText().equals("") || !isInteger(txtTemperature.getText())||Integer.parseInt(txtTemperature.getText())<150)
         {
-            JOptionPane.showMessageDialog(this, "Temperature Feild is invalid.");
+            JOptionPane.showMessageDialog(this, "Temperature Field is invalid.");
         }
-        else if(txtBloodPressure.getText().equals("") || !isInteger(txtBloodPressure.getText()))
+        else if(txtBloodPressure.getText().equals("") || !isInteger(txtBloodPressure.getText())|| Integer.parseInt(txtBloodPressure.getText())<300)
         {
-            JOptionPane.showMessageDialog(this, "Blood pressure Feild is invalid.");
+            JOptionPane.showMessageDialog(this, "Blood pressure Field is invalid.");
         }
         else
         {

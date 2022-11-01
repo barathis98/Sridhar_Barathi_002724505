@@ -105,6 +105,10 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(102, 102, 102));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/refresh.png"))); // NOI18N
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,20 +121,18 @@ public class SystemAdminHospital extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
                         .addComponent(txtAdd)
-                        .addGap(31, 31, 31)
+                        .addGap(39, 39, 39)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGap(34, 34, 34)
+                        .addComponent(txtDelete)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
@@ -140,21 +142,16 @@ public class SystemAdminHospital extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtAdd)
-                            .addComponent(jButton2)
-                            .addComponent(txtDelete))
-                        .addContainerGap(51, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(67, 67, 67))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdd)
+                    .addComponent(jButton2)
+                    .addComponent(txtDelete)
+                    .addComponent(jButton1))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, txtAdd, txtDelete});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, txtAdd, txtDelete});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,23 +182,34 @@ public class SystemAdminHospital extends javax.swing.JFrame {
                  JOptionPane.showMessageDialog(this, "Select a Hospital to delete it.");
                  return;
              }
+             else
+             {
              DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
              Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
              
              hd.deleteHospital(selectedHospital);
              
              JOptionPane.showMessageDialog(this, "Selected Hospital was deleted.");
-             
+             }
         }
     }//GEN-LAST:event_txtDeleteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         int selectedRowIndex = tblHospital.getSelectedRow();
+        if (selectedRowIndex<0)
+        {
+             JOptionPane.showMessageDialog(this, "Select a Hospital to edit it.");
+        }
+        else
+        {
+            
+        
         DefaultTableModel model = (DefaultTableModel) tblHospital.getModel();
         Hospital selectedHospital = (Hospital) model.getValueAt(selectedRowIndex, 4);
         EditHospital eh=new EditHospital(selectedHospital);
         eh.setVisible(true);
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
